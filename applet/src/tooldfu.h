@@ -21,7 +21,6 @@ fetching the raw buffer.
 #define TDFU_SPIFLASHWRITE_NEW       0x04 //u32 address, u32 size, u8 val[]
 #define TDFU_SPIFLASHSECURITYREGREAD 0x08 // ()
 
-
 //Radio Commands
 #define TDFU_C5000_WRITEREG 0x10 //u8 reg, u8 val
 #define TDFU_C5000_READREG  0x11 //u8 register
@@ -30,3 +29,7 @@ fetching the raw buffer.
 //Graphics Commands
 #define TDFU_PRINT 0x80 //(u8 x, u8 y, wchar_t str[])
 #define TDFU_BOX   0x81 //(u8 x, u8 y, u8 xp, u8 yp)
+
+
+#define TDFU_AMBE_ENCODE 0x20
+#define TDFU_AMBE_DECODE 0x21

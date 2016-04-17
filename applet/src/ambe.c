@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "md380.h"
 #include "printf.h"
@@ -22,11 +23,47 @@
 
 int ambe_encode_thing_hook(char *a1, int a2, int *a3, int a4,
 		      short a5, short a6, short a7, int a8){
-  printf("AMBE2+ function is hooked!\n");
+  int ret;
+  int i;
+  int wavstate;
+  int val;
+  short *s8;
+//
+  ret=ambe_encode_thing(a1,a2,a3,a4, 
+                        a5,a6,a7,a8);
+//2000dfc6 0 2000de82 80 6208 0 8192 2000c730  
+  printf("ambe_encode %x %d %x %d %d %d %d %x\n",a1,a2,a3,a4,a5,a6,a7,a8);
   
+  s8=(short *)a8;                            
+//  printf("AMBE2+ function is hooked!\n");
+
+//1 abbr
+//8 wav
+
+  val=0;
+  for (i=0;i<80;i++)
+    val+=(abs(s8[i] )/256) ;
+  val=val/80;
+  val=val*5;
+  
+  printf("%d ",val);
+  
+/*  if (val > 100 ) val = 100;
+  wavstate=OS_ENTER_CRITICAL();
+                    
+  gfx_blockfill( 2, 50, 100 , 51);  
+  gfx_set_fg_color(0x555555);
+  gfx_set_bg_color(0xff000000);
+                             
+  gfx_blockfill( 2, 50, val , 51);
+                                   
+  gfx_set_fg_color(0xff8032);
+  gfx_set_bg_color(0xff000000);
+  OS_EXIT_CRITICAL(wavstate);
+                                            
+*/
   //Call back to the original function.
-  return ambe_encode_thing(a1,a2,a3,a4,
-			   a5,a6,a7,a8);
+  return (ret);
 }
 
 
@@ -108,13 +145,24 @@ int ambe_decode_wav_hook(int *a1, signed int eighty, char *bitbuffer,
   //First we call the original function.
   int toret=ambe_decode_wav(a1, eighty, bitbuffer,
 			    a4, a5, a6, a7);
-
-  /* Print the parameters
+/*
+// 0x20011aa8, 80, 0x20011c8e, 0, 0, 0, 0x20011224
+   ^
+   ^
+   ^
+   ^
+   ^
+   ^
+   ^
+   ^
+   ---------------------Pointer to signd wav
+*/
+//  /* Print the parameters
   printf("ambe_decode_wav(0x%08x, %d, 0x%08x,\n"
     "%d, %d, %d, 0x%08x);\n",
     a1, eighty, bitbuffer,
     a4, a5, a6, a7);
-  */
+  
 
   /* This is very noisy, so we don't enable it by default.  It prints
      the WAV as hex pairs, which will quickly flood the buffer if it

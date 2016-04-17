@@ -29,6 +29,8 @@
 #include "spiflash.h"
 #include "string.h"
 
+#include "ambe.h"
+
 int usb_upld_hook(void* iface, char *packet, int bRequest, int something){
   /* This hooks the USB Device Firmware Update upload function,
      so that we can transfer data out of the radio without asking
@@ -103,6 +105,8 @@ int usb_dnld_hook(){
   char *thingy2=(char*) 0x2001d041;
   
   int state;
+  int ret;
+  int ambr_buffer[1080]; // big 
   
   /* DFU transfers begin at block 2, and special commands hook block
      0.  We'll use block 1, because it handily fits in the gap without
@@ -211,6 +215,21 @@ int usb_dnld_hook(){
                                       3*256);
       break;
 
+
+
+    case TDFU_AMBE_ENCODE:
+      *dfu_target_adr=dmesg_tx_buf;
+                  
+      ret=ambe_encode_thing_hook(dmesg_tx_buf+1, 0, ambr_buffer, 80, 6208, 0, 8192, (int) packet+1);
+      dmesg_tx_buf[0]=ret;
+      break;
+      
+    case TDFU_AMBE_DECODE:
+      *dfu_target_adr=dmesg_tx_buf;
+            
+      ret=ambe_decode_wav_hook((int * ) 0x20011aa8, 80, packet+1, 0,0,0, (int) dmesg_tx_buf+1);
+      dmesg_tx_buf[0]=ret;
+      break;  
       
 //Radio Commands
     case TDFU_C5000_READREG:
