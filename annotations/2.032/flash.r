@@ -171,11 +171,27 @@ CCa 0x801274c Is Menu ProgramRadio allowedly
 CCa 0x8012766 0x80127d0 .. Create_Menu_Entry_ProgramRadio
 CCa 0x8012776 ... P.r.o.g.r.a.m...R.a.d.i.o
 af+ 0x80127d0 880 Create_Menu_Entry_ProgramRadio
-af+ 0x8012b54 854 F_5075
+CCa 0x80127d4 Program Password
+CCa 0x8012824 ... E.d.i.t...C.h.a
+CCa 0x8012868 ... R.x...F.r.e.q.u.
+CCa 0x8012896 ... T.x...F.r.e.q.
+CCa 0x80128c8 ... C.h.a.n.n.e.l..N.a.m.e
+CCa 0x80128fa ... T.i.m.e...O.u.t
+CCa 0x801293a ... C.T.C./.D.C.S
+CCa 0x801296e ... C.T.C./.D.C.S
+CCa 0x80129ae ... C.o.l.o.r...C.o.
+CCa 0x80129e0 ... R.e.p.e.a.t.e.r...S.l.o.t
+CCa 0x8012a14 ... C.o.l.o.r...C.o.
+CCa 0x8012a46 ... R.e.p.e.a.t.e.r...S.l.o.t
+CCa 0x8012afa ... E.n.t.e.r...P.a.s.s.w.o.r.d
+CCa 0x8012b2c 0x8012b55 .. 0x08012b54 Create_Menu_Entry_ProgramRadio_with_password_set
+af+ 0x8012b54 854 Create_Menu_Entry_ProgramRadio_with_password_set
 CCa 0x8012ba2 ConfigData + 1c (byte) F_5075
 CCa 0x8012bb2 ConfigData + 1d (byte) F_5075
 CCa 0x8012bc2 ConfigData + 1e (byte) F_5075
 CCa 0x8012bd2 ConfigData + 1f (byte) F_5075
+CCa 0x8012e58 ... W.r.o.n.g
+CCa 0x8012e9c ... P.a.s.s.w.o.r.d.
 CCa 0x8014f4e S.a.v.e.d...I.n.b.o.x
 af+ 0x80152ec 198 Create_Menu_Entry_RadioInfo
 af+ 0x8015464 122 F_5076
