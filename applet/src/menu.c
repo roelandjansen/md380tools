@@ -380,16 +380,28 @@ void create_menu_entry_debug_screen(void) {
 
 void m(void) {
  uint8_t x;
+ int i;
+  struct MENU *menu_mem;
+ 
+  x = F_251(*menu_depth);
+  printf("%d %d %d \n",*menu_depth,x,*menu_id);
+  *menu_id=x-1;
 
-  
 
- x= F_251(*menu_depth);
-
- *menu_id=x;
- printf("x: %d\n",x);
  printf("your enter: ");
  printhex2(menu_unkonwn_24,14);
  printf("\n");
+ 
+ menu_mem = (menu_memory + ((*menu_depth) * 0xc)) + 0xc;
+ menu_mem->menu_titel = L"hase";
+
+ menu_mem->unknownp = 0x14 * (*menu_unkonwn_01) + menu_unknown_02;
+
+ menu_mem->numberofentrys=1;
+ menu_mem->unknown_00 = 0;
+ menu_mem->unknown_01 = 0;
+
+ create_menu_entry_hook( (*menu_id),  wt_addl_func,  menu_entry_back,    menu_entry_back, 6, 2 , 1);
        
 }
 
@@ -541,7 +553,7 @@ void create_menu_entry_edit_screen(void) {
 0x08012b0e      6060           str r0, [r4, 4]
 */
   menu_mem = (menu_memory + ((*menu_depth) * 0xc)) + 0xc;
-  menu_mem->menu_titel = /*wt_programradio; //*/ wt_edit;
+  menu_mem->menu_titel = wt_edit;
   menu_mem->unknownp = 0x14 * (*menu_unkonwn_01) + menu_unknown_02;
 /*
 
@@ -579,7 +591,10 @@ void create_menu_entry_edit_screen(void) {
 0x08012b38      0078           ldrb r0, [r0]
 0x08012b3a      f9f7f9fd       bl F_249_Create_MenuEntry
 */
+   printf("create_menu_entry_edit_screen %d\n",*menu_depth);
+   
   create_menu_entry_hook( (*menu_id),  wt_edit ,  m+1 , Create_Menu_Entry_ProgramRadio_with_passwod_green+1,  0x81, 0 , 1);
+  
 /*
 0x08012b3e      1fbd           pop {r0, r1, r2, r3, r4, pc}
 */
@@ -589,7 +604,7 @@ void create_menu_entry_edit_screen(void) {
 void create_menu_entry_addl_functions_screen(void) {
   struct MENU *menu_mem;
   int i;
-
+  printf("create_menu_entry_addl_functions_screen %d\n",*menu_depth);
   menu_mem = (menu_memory + ((*menu_depth) * 0xc)) + 0xc;
   menu_mem->menu_titel = wt_addl_func;
 
@@ -619,7 +634,8 @@ void create_menu_utilies_hook(void) {
   } else {
     printf("program_radio_prohibited\n");
   }
-
+   printf("create_menu_utilies_hook %d\n",*menu_depth);
+   
   create_menu_entry_hook(8, wt_programradio, menu_entry_programradio , menu_entry_back, 0x8a, 0 , 1);
   create_menu_entry_hook(9, wt_addl_func,     create_menu_entry_addl_functions_screen + 1 , menu_entry_back, 0x8a,0 , 1);
 }
