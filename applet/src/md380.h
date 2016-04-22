@@ -109,6 +109,40 @@ extern void    *menu_memory;
 extern void    *menu_unknown_02;
 extern uint8_t *menu_unkonwn_01;
 
+extern uint8_t *menu_unkonwn_10;
+extern uint8_t *menu_unkonwn_11;
+extern uint8_t *menu_unkonwn_12;
+extern uint8_t *menu_unkonwn_13;
+extern uint8_t *menu_unkonwn_14;
+
+extern uint32_t *menu_unkonwn_20;
+extern uint8_t  *menu_unkonwn_21;
+extern uint8_t  *menu_unkonwn_22;
+extern uint8_t  *menu_unkonwn_23;
+extern uint32_t *menu_unkonwn_24;
+
+
+extern uint32_t *menu_0x20001114;
+extern uint8_t  *menu_0x200011e4;
+extern void     *menu_0x2001b716;
+extern uint8_t  *menu_0x2001d3c1;
+extern uint8_t  *menu_0x2001d3ed;
+extern uint8_t  *menu_0x2001d3ee;
+extern uint8_t  *menu_0x2001d3ef;
+extern uint8_t  *menu_0x2001d3f1;
+extern uint8_t  *menu_0x2001d3f4;
+
+
+extern uint32_t (*F_251)(uint32_t);
+
+
+extern void     *(*Create_Menu_Entry_ProgramRadio_with_passwod)(void);
+extern void     *(*Create_Menu_Entry_ProgramRadio_with_passwod_green)(void);
+
+
+extern void*   (*create_menu_entry_edit_screen1)(void);
+
+
 //! program_radio_unprohibited ... bulding site is an struct
 extern uint8_t *program_radio_unprohibited;
 

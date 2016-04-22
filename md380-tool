@@ -413,7 +413,7 @@ def findcc(dfu):
         print "Trying color %d." % (cc&0xf);
         sys.stdout.flush();
         dfu.c5000poke(0x1f,(cc&0xF)<<4);
-        time.sleep(1.0);
+        time.sleep(2.0);
         if dfu.c5000peek(0x0d)&0x10:
             print "Got a match on color %i"%(cc&0xf);
             while dfu.c5000peek(0x0d)&0x10:

@@ -279,8 +279,8 @@ if __name__== '__main__':
         0x0801b2ca, 0x0801b2f2, 0x0801b364, 0x0801ad50, 0x0801ad82, 0x0801adec, 0x0801ae1e, 0x0801245c,
         0x080198a2, 0x0801992c];
     ### only for debug and information addiction
-    #for adr in Create_MenuEntrylist:
-    #    merger.hookbl(adr,sapplet.getadr("create_menu_entry_hook"),0);
+    for adr in Create_MenuEntrylist:
+        merger.hookbl(adr,sapplet.getadr("create_menu_entry_hook"),0);
 
     # additional menu hook
     merger.hookbl(0x08012740,sapplet.getadr("create_menu_utilies_hook"),0);

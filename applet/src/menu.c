@@ -23,6 +23,8 @@ static wchar_t wt_rbeep[]             = L"M. RogerBeep";
 static wchar_t wt_userscsv[]          = L"UsersCSV";
 static wchar_t wt_datef_original[]    = L"Original";
 static wchar_t wt_datef_germany[]     = L"German";
+static wchar_t wt_edit[]              = L"Edit";
+
 
 /* This hooks a function that is called a lot during menu processing.
    Its exact purpose is unknown, but I'm working on that.
@@ -375,6 +377,215 @@ void create_menu_entry_debug_screen(void) {
   }
 }
 
+
+void m(void) {
+ uint8_t x;
+
+  
+
+ x= F_251(*menu_depth);
+
+ *menu_id=x;
+ printf("x: %d\n",x);
+ printf("your enter: ");
+ printhex2(menu_unkonwn_24,14);
+ printf("\n");
+       
+}
+
+
+void create_menu_entry_edit_screen(void) {
+  struct MENU *menu_mem;
+  uint32_t i;
+  uint32_t *p;
+
+
+/*
+
+
+
+
+/ (fcn) Create_Menu_Entry_ProgramRadio 880
+
+0x080127d0      10b5           push {r4, lr}
+0x080127d2      84b0           sub sp, 0x10
+0x080127d4      dff8f81a       ldr.w r1, [pc, 0xaf8]       ; [0x80132d0:4]=0x2001c674 ; Program Password
+0x080127d8      0020           movs r0, 0
+0x080127da      00e0           b 0x80127de
+0x080127dc      401c           adds r0, r0, 1
+0x080127de      c0b2           uxtb r0, r0
+0x080127e0      0428           cmp r0, 4
+0x080127e2      03d2           bhs 0x80127ec
+0x080127e4      c0b2           uxtb r0, r0
+0x080127e6      425c           ldrb r2, [r0, r1]
+0x080127e8      ff2a           cmp r2, 0xff
+0x080127ea      f7d0           beq 0x80127dc
+0x080127ec      c0b2           uxtb r0, r0
+0x080127ee      0428           cmp r0, 4
+0x080127f0      40f04381       bne.w 0x8012a7a
+ .
+ .
+ .
+*/
+/*
+0x08012a7a      dff82c0b       ldr.w r0, [pc, 0xb2c]       ; [0x80135a8:4]=0x2001d3c1
+*/
+
+/*
+0x08012a7e      dff83c19       ldr.w r1, [pc, 0x93c]       ; [0x80133bc:4]=0x200011e4
+0x08012a82      0978           ldrb r1, [r1]
+0x08012a84      0170           strb r1, [r0]
+*/
+
+  *menu_0x2001d3c1=*menu_0x200011e4;
+/*
+0x08012a86      dff8240b       ldr.w r0, [pc, 0xb24]       ; [0x80135ac:4]=0x2001d3f4
+0x08012a8a      0021           movs r1, 0
+0x08012a8c      0170           strb r1, [r0]
+*/
+  *menu_0x2001d3f4=0;
+
+
+/*
+0x08012a8e      dff8200b       ldr.w r0, [pc, 0xb20]       ; [0x80135b0:4]=0x20001114
+0x08012a92      dff8201b       ldr.w r1, [pc, 0xb20]       ; [0x80135b4:4]=0x2001b716
+0x08012a96      0160           str r1, [r0]
+*/
+
+  *menu_0x20001114 = (uint32_t ) menu_0x2001b716;
+
+/*
+0x08012a98      0020           movs r0, 0
+0x08012a9a      07e0           b 0x8012aac
+0x08012a9c      c0b2           uxtb r0, r0
+0x08012a9e      dff8101b       ldr.w r1, [pc, 0xb10]       ; [0x80135b0:4]=0x20001114
+0x08012aa2      0968           ldr r1, [r1]
+0x08012aa4      0022           movs r2, 0
+0x08012aa6      21f81020       strh.w r2, [r1, r0, lsl 1]
+0x08012aaa      401c           adds r0, r0, 1
+0x08012aac      c0b2           uxtb r0, r0
+0x08012aae      1128           cmp r0, 0x11
+0x08012ab0      f4d3           blo 0x8012a9c
+*/
+
+// clear retrun buffer
+ for (i=0;i<17;i++) {
+   p=(void *) *menu_0x20001114;
+   p = p + i;
+   *p = 0;
+   }
+
+
+/*
+
+*/
+/*
+0x08012ab2      dff8040b       ldr.w r0, [pc, 0xb04]       ; [0x80135b8:4]=0x2001d3ed
+0x08012ab6      0821           movs r1, 8
+0x08012ab8      0170           strb r1, [r0]
+*/
+*menu_0x2001d3ed=8;
+
+/*
+0x08012aba      dff8000b       ldr.w r0, [pc, 0xb00]       ; [0x80135bc:4]=0x2001d3ee
+0x08012abe      0021           movs r1, 0
+0x08012ac0      0170           strb r1, [r0]
+*/
+*menu_0x2001d3ee=0;
+
+/*
+0x08012ac2      dff8fc0a       ldr.w r0, [pc, 0xafc]       ; [0x80135c0:4]=0x2001d3ef
+0x08012ac6      0021           movs r1, 0
+0x08012ac8      0170           strb r1, [r0]
+*/
+*menu_0x2001d3ef=0;
+
+/*
+0x08012aca      dff8f80a       ldr.w r0, [pc, 0xaf8]       ; [0x80135c4:4]=0x2001d3f1
+0x08012ace      0021           movs r1, 0
+0x08012ad0      0170           strb r1, [r0]
+*/
+*menu_0x2001d3f1=0;
+
+
+/*
+0x08012ad2      dff8f40a       ldr.w r0, [pc, 0xaf4]       ; [0x80135c8:4]=0x2001d3f0
+0x08012ad6      0321           movs r1, 3
+0x08012ad8      0170           strb r1, [r0]
+*/
+
+*menu_0x2001d3f1=3;
+
+/*
+0x08012ada      dff8e008       ldr.w r0, [pc, 0x8e0]       ; [0x80133bc:4]=0x200011e4 uint8_t *menu_depth
+0x08012ade      0078           ldrb r0, [r0]
+
+0x08012ae0      0c21           movs r1, 0xc
+
+0x08012ae2      dff8dc28       ldr.w r2, [pc, 0x8dc]       ; [0x80133c0:4]=0x2001c148  void    *menu_memory
+0x08012ae6      01fb0020       mla r0, r1, r0, r2
+0x08012aea      10f10c04       adds.w r4, r0, 0xc
+0x08012aee      dff8d408       ldr.w r0, [pc, 0x8d4]       ; [0x80133c4:4]=0x2001d1a0
+0x08012af2      0068           ldr r0, [r0]
+0x08012af4      1449           ldr r1, [pc, 0x50]          ; [0x8012b48:4]=0x20000000
+0x08012af6      11eb8000       adds.w r0, r1, r0, lsl 2
+
+0x08012afa      d0f84003       ldr.w r0, [r0, 0x340]       ; ... E.n.t.e.r...P.a.s.s.w.o.r.d
+0x08012afe      2060           str r0, [r4]
+
+0x08012b00      ea48           ldr r0, [pc, 0x3a8]         ; [0x8012eac:4]=0x2001d3c2
+0x08012b02      0078           ldrb r0, [r0]
+0x08012b04      1421           movs r1, 0x14
+0x08012b06      dff8b028       ldr.w r2, [pc, 0x8b0]       ; [0x80133b8:4]=0x20019df0
+0x08012b0a      01fb0020       mla r0, r1, r0, r2
+0x08012b0e      6060           str r0, [r4, 4]
+*/
+  menu_mem = (menu_memory + ((*menu_depth) * 0xc)) + 0xc;
+  menu_mem->menu_titel = /*wt_programradio; //*/ wt_edit;
+  menu_mem->unknownp = 0x14 * (*menu_unkonwn_01) + menu_unknown_02;
+/*
+
+0x08012b10      0120           movs r0, 1
+0x08012b12      2072           strb r0, [r4, 8]
+*/
+  menu_mem->numberofentrys=1;
+/*
+0x08012b14      0020           movs r0, 0
+0x08012b16      6072           strb r0, [r4, 9]
+*/
+  menu_mem->unknown_00 = 0;
+/*
+0x08012b18      0020           movs r0, 0
+0x08012b1a      6081           strh r0, [r4, 0xa]
+*/
+  menu_mem->unknown_01 = 0;
+/*
+
+
+0x08012b1c      0120           movs r0, 1
+0x08012b1e      0290           str r0, [sp, 8]
+
+0x08012b20      0020           movs r0, 0
+0x08012b22      0190           str r0, [sp, 4]
+
+0x08012b24      8120           movs r0, 0x81
+0x08012b26      0090           str r0, [sp]
+
+0x08012b28      dff8a03a       ldr.w r3, [pc, 0xaa0]       ; [0x80135cc:4]=0x801a2d7
+0x08012b2c      dff8a02a       ldr.w r2, [pc, 0xaa0]       ; [0x80135d0:4]=0x8012b55 ; 0x8012b55 .. 0x08012b54 Create_Menu_Entry_ProgramRadio_with_password_set
+0x08012b30      dff87c0a       ldr.w r0, [pc, 0xa7c]       ; [0x80135b0:4]=0x20001114
+0x08012b34      0168           ldr r1, [r0]
+0x08012b36      dd48           ldr r0, [pc, 0x374]         ; [0x8012eac:4]=0x2001d3c2
+0x08012b38      0078           ldrb r0, [r0]
+0x08012b3a      f9f7f9fd       bl F_249_Create_MenuEntry
+*/
+  create_menu_entry_hook( (*menu_id),  wt_edit ,  m+1 , Create_Menu_Entry_ProgramRadio_with_passwod_green+1,  0x81, 0 , 1);
+/*
+0x08012b3e      1fbd           pop {r0, r1, r2, r3, r4, pc}
+*/
+}
+
+
 void create_menu_entry_addl_functions_screen(void) {
   struct MENU *menu_mem;
   int i;
@@ -384,7 +595,7 @@ void create_menu_entry_addl_functions_screen(void) {
 
   menu_mem->unknownp = 0x14 * (*menu_unkonwn_01) + menu_unknown_02;
 
-  menu_mem->numberofentrys=4;
+  menu_mem->numberofentrys=5;
   menu_mem->unknown_00 = 0;
   menu_mem->unknown_01 = 0;
 
@@ -392,6 +603,7 @@ void create_menu_entry_addl_functions_screen(void) {
   create_menu_entry_hook( (*menu_id) + 1, wt_datef,    create_menu_entry_datef_screen + 1,    menu_entry_back, 0x98, 0 , 1);
   create_menu_entry_hook( (*menu_id) + 2, wt_userscsv, create_menu_entry_userscsv_screen + 1, menu_entry_back, 0x98, 0 , 1);
   create_menu_entry_hook( (*menu_id) + 3, wt_debug,    create_menu_entry_debug_screen + 1,    menu_entry_back, 0x98, 0 , 1);
+  create_menu_entry_hook( (*menu_id) + 4, wt_edit,     create_menu_entry_edit_screen +1 ,     menu_entry_back, 0x8a, 0 , 1);
 
  for(i=0;i<4;i++) {  // not yet known ;)
    uint8_t *p;

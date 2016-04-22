@@ -96,11 +96,43 @@ uint8_t *menu_id=0x2001d3c2;
 uint8_t *menu_depth=0x200011e4;
 uint8_t *menu_entry_selected=0x2001d3b2;
 void    *menu_memory=0x2001c148;
+
+
+uint32_t *menu_0x20001114 = 0x20001114;
+uint8_t  *menu_0x200011e4 = 0x200011e4;
+void     *menu_0x2001b716 = 0x2001b716;
+uint8_t  *menu_0x2001d3c1 = 0x2001d3c1;
+uint8_t  *menu_0x2001d3ed = 0x2001d3ed;
+uint8_t  *menu_0x2001d3ee = 0x2001d3ee;
+uint8_t  *menu_0x2001d3ef = 0x2001d3ef;
+uint8_t  *menu_0x2001d3f1 = 0x2001d3f1;
+uint8_t  *menu_0x2001d3f4 = 0x2001d3f4;
+
+void     *(*Create_Menu_Entry_ProgramRadio_with_passwod)(void)  =  0x08012b54;
+void     *(*Create_Menu_Entry_ProgramRadio_with_passwod_green)(void) = 0x801a2d6;
+
+
 void    *menu_unknown_02=0x20019df0;
 uint8_t *menu_unkonwn_01=0x2001d3c2;
 
+uint8_t *menu_unkonwn_10=0x2001d3ed; // 8
+uint8_t *menu_unkonwn_11=0x2001d3ee; //0
+uint8_t *menu_unkonwn_12=0x2001d3ef;   // 0                            
+uint8_t *menu_unkonwn_13=0x2001d3f1;          //0                     
+uint8_t *menu_unkonwn_14=0x2001d3f0;       //3                   
+
+
+uint32_t *menu_unkonwn_20=0x20001114;
+uint8_t  *menu_unkonwn_21=0x2001d3c1;
+uint8_t  *menu_unkonwn_22=0x200011e4;
+uint8_t  *menu_unkonwn_23=0x2001d3f4;
+uint32_t *menu_unkonwn_24=0x2001b716;
+
 uint8_t *program_radio_unprohibited=(uint8_t *)(0x2001d030 + 4);
 
+void    *(*create_menu_entry_edit_screen1)(void)=0x080127d0;
+
+uint32_t (*F_251)(uint32_t)=0x0800f422+1; /// unshute about size
 
 char* channelnum=0x2001d376;
 int (*read_channel_switch)()=0x0804d269;

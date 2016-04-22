@@ -11,7 +11,7 @@ patched.img: unwrapped.img
 	./patch.py
 
 #Apply the logo.
-	../../md380-gfx --firmware=patched.img --gfx=0x80f9ca8-poc-gs.ppm relocate
+	../../md380-gfx --firmware=patched.img --gfx=a.ppm relocate
 	#../../md380-gfx --firmware=patched.img --gfx=0x80f9ca8-poc.ppm write
 	#../../md380-gfx --firmware=patched.img --gfx=0x80f9ca8-shmoo.ppm write
 	#../../md380-gfx --firmware=patched.img --gfx=0x80f9ca8-shmoocon.ppm write
