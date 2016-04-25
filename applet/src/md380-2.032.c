@@ -110,10 +110,10 @@ uint8_t  *menu_0x2001d3f1 = 0x2001d3f1;
 uint8_t  *menu_0x2001d3f4 = 0x2001d3f4;
 
 void     *(*Create_Menu_Entry_ProgramRadio_with_passwod)(void)  =  0x08012b54;
-void     *(*Create_Menu_Entry_ProgramRadio_with_passwod_green)(void) = 0x801a2d6;
+void     *(*md380_menu_numerical_input)(void) = 0x801a2d6;
 
 
-void    *menu_unknown_02=0x20019df0;
+void    *menu_mem_base = 0x20019df0;
 uint8_t *menu_unkonwn_01=0x2001d3c2;
 
 uint8_t *menu_unkonwn_10=0x2001d3ed; // 8
@@ -128,6 +128,8 @@ uint8_t  *menu_unkonwn_21=0x2001d3c1;
 uint8_t  *menu_unkonwn_22=0x200011e4;
 uint8_t  *menu_unkonwn_23=0x2001d3f4;
 uint32_t *menu_unkonwn_24=0x2001b716;
+
+wchar_t  *md380_menu_edit_buf = 0x2001b716;
 
 uint8_t *program_radio_unprohibited=(uint8_t *)(0x2001d030 + 4);
 

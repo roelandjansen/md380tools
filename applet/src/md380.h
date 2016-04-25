@@ -106,7 +106,7 @@ extern uint8_t *menu_id;
 extern uint8_t *menu_depth;
 extern uint8_t *menu_entry_selected;
 extern void    *menu_memory;
-extern void    *menu_unknown_02;
+extern void    *menu_mem_base;
 extern uint8_t *menu_unkonwn_01;
 
 extern uint8_t *menu_unkonwn_10;
@@ -133,13 +133,14 @@ extern uint8_t  *menu_0x2001d3f0;
 
 extern uint8_t  *menu_0x2001d3f1;
 extern uint8_t  *menu_0x2001d3f4;
+extern wchar_t  *md380_menu_edit_buf;
 
 
 extern uint32_t (*F_251)(uint32_t);
 
 
 extern void     *(*Create_Menu_Entry_ProgramRadio_with_passwod)(void);
-extern void     *(*Create_Menu_Entry_ProgramRadio_with_passwod_green)(void);
+extern void     *(*md380_menu_numerical_input)(void);
 
 
 extern void*   (*create_menu_entry_edit_screen1)(void);
