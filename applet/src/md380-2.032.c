@@ -89,8 +89,8 @@ void     *(*main_menu)(void *)=0x08039c23;
 void     *(*md380_create_main_meny_entry)(void)=0x0800c189;
 void     *(*md380_menu_numerical_input)(void) = 0x801a2d6;
 void     *(*md380_create_menu_entry)(int a, void *b , void *c, void  *d, int e, int f ,int g)=0x0800c731;
-void     *(*md380_menu_entry_back)(void)=0x800f453;
-void     *(*md380_menu_entry_programradio)(void)=0x80127d1;
+void     *(*md380_menu_entry_back)(void)=0x800f452;
+void     *(*md380_menu_entry_programradio)(void)=0x80127d0;
 
 uint32_t *md380_menu_0x20001114 = 0x20001114;
 uint8_t  *md380_menu_0x200011e4 = 0x200011e4;
