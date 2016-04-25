@@ -86,6 +86,20 @@ CCa 0x800d970 0x2001d1a8 Time
 CCa 0x800d986 0x9d 157
 CCa 0x800d988 0x60 96
 CCa 0x800d98a 0x5f 95
+af+ 0x80143f4 104 Create_Menu_Entry_RX_QRG_shown
+af+ 0x8014464 214 Create_Menu_Entry_RX_QRG_1
+af+ 0x801453a 126 Create_Menu_Entry_RX_QRG_2
+
+af+ 0x80145b8 102 Create_Menu_Entry_RX_QRG_3
+CCa 0x80145f8 with timeout
+
+af+ 0x8014648 622 Create_Menu_Entry_RX_QRG_4
+ F_4301 .- spiflash_w 
+ F_812 .- spfflash  read  bl F_260  spf  bl F_261 spf
+
+ F_314 write to hw
+
+
 af+ 0x800d9b0 18 F_4153
 af+ 0x800d9cc 124 F_4220
 af+ 0x800da54 124 F_786

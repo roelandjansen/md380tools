@@ -105,6 +105,7 @@ uint8_t  *menu_0x2001d3c1 = 0x2001d3c1;
 uint8_t  *menu_0x2001d3ed = 0x2001d3ed;
 uint8_t  *menu_0x2001d3ee = 0x2001d3ee;
 uint8_t  *menu_0x2001d3ef = 0x2001d3ef;
+uint8_t  *menu_0x2001d3f0 = 0x2001d3f0;
 uint8_t  *menu_0x2001d3f1 = 0x2001d3f1;
 uint8_t  *menu_0x2001d3f4 = 0x2001d3f4;
 

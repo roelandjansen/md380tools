@@ -94,12 +94,14 @@ e0020000 Selected Page Index
 
 
 
+void create_menu_entry_addl_functions_screen(void) ;
 
 void create_menu_entry_hook(int a, void * b , void * c, void  * d, int e, int f ,int g) {
   printf("0x%x Text: 0x%x GreenKey 0x%x RedKey 0x%x 0x%x 0x%x 0x%x\n", a,b,c,d,e,f,g);
   printf("b: ");
   printhex2(b,14);
   printf("\n");
+  printf(" menu_depth: %d\n", *menu_depth);
   create_menu_entry(a,b,c,d,e,f,g);
 }
 
@@ -378,19 +380,23 @@ void create_menu_entry_debug_screen(void) {
 }
 
 
+
+void m1(void) {
+   printf("m1\n");
+   
+}
+
 void m(void) {
  uint8_t x;
  int i;
   struct MENU *menu_mem;
  
-  x = F_251(*menu_depth);
-  printf("%d %d %d \n",*menu_depth,x,*menu_id);
-  *menu_id=x-1;
-
 
  printf("your enter: ");
  printhex2(menu_unkonwn_24,14);
  printf("\n");
+
+
  
  menu_mem = (menu_memory + ((*menu_depth) * 0xc)) + 0xc;
  menu_mem->menu_titel = L"hase";
@@ -401,8 +407,12 @@ void m(void) {
  menu_mem->unknown_00 = 0;
  menu_mem->unknown_01 = 0;
 
- create_menu_entry_hook( (*menu_id),  wt_addl_func,  menu_entry_back,    menu_entry_back, 6, 2 , 1);
-       
+  x = F_251(*menu_depth);
+ printf("%d %d %d \n",*menu_depth,x,*menu_id);
+  *menu_id=x-1 ;//0; //x-1;
+  *menu_depth = *menu_depth -1;
+ create_menu_entry_hook( (*menu_id), (wchar_t *) menu_unkonwn_24,    menu_entry_back,  menu_entry_back  ,6, 1 , 1);
+      
 }
 
 
@@ -526,7 +536,7 @@ void create_menu_entry_edit_screen(void) {
 0x08012ad8      0170           strb r1, [r0]
 */
 
-*menu_0x2001d3f1=3;
+*menu_0x2001d3f0=3;
 
 /*
 0x08012ada      dff8e008       ldr.w r0, [pc, 0x8e0]       ; [0x80133bc:4]=0x200011e4 uint8_t *menu_depth
@@ -620,7 +630,7 @@ void create_menu_entry_addl_functions_screen(void) {
   create_menu_entry_hook( (*menu_id) + 3, wt_debug,    create_menu_entry_debug_screen + 1,    menu_entry_back, 0x98, 0 , 1);
   create_menu_entry_hook( (*menu_id) + 4, wt_edit,     create_menu_entry_edit_screen +1 ,     menu_entry_back, 0x8a, 0 , 1);
 
- for(i=0;i<4;i++) {  // not yet known ;)
+ for(i=0;i<5;i++) {  // not yet known ;)
    uint8_t *p;
    p = menu_unknown_02 + ( (*menu_unkonwn_01) + i ) * 0x14;
    p[0x10] = 2;

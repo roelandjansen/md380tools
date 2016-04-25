@@ -129,6 +129,8 @@ extern uint8_t  *menu_0x2001d3c1;
 extern uint8_t  *menu_0x2001d3ed;
 extern uint8_t  *menu_0x2001d3ee;
 extern uint8_t  *menu_0x2001d3ef;
+extern uint8_t  *menu_0x2001d3f0;
+
 extern uint8_t  *menu_0x2001d3f1;
 extern uint8_t  *menu_0x2001d3f4;
 
