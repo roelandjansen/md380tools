@@ -13,19 +13,19 @@
 //Firmware calls to 2.032.
 
 //! Functions that handles spi flash .. handles semaphore internal
-int (*spiflash_read)(void *dst, long adr, long len) = 0x0802fd83;
-void (*spiflash_write)(void *dst, long adr, long len) =0x0802fe6b;
+int (*md380_spiflash_read)(void *dst, long adr, long len) = 0x0802fd83;
+void (*md380_spiflash_write)(void *dst, long adr, long len) =0x0802fe6b;
 
-int (*spiflash_security_registers_read)(void *dst, long adr, long len) = 0x080301bd;
+int (*md380_spiflash_security_registers_read)(void *dst, long adr, long len) = 0x080301bd;
 
-void (*spiflash_enable)() = 0x0802fe37;
-void (*spiflash_disable)() = 0x0802fe53;
-void (*spiflash_wait)()=0x0802fe15;
+void (*md380_spiflash_enable)() = 0x0802fe37;
+void (*md380_spiflash_disable)() = 0x0802fe53;
+void (*md380_spiflash_wait)()=0x0802fe15;
 
-void (*spiflash_block_erase64k)(uint32_t adr)=0x0802fbb7;
-void (*spiflash_sektor_erase4k)(uint32_t adr)=0x0802fb83;
+void (*md380_spiflash_block_erase64k)(uint32_t adr)=0x0802fbb7;
+void (*md380_spiflash_sektor_erase4k)(uint32_t adr)=0x0802fb83;
 
-INT8U (*spi_sendrecv)(INT8U data) = 0x0802fdc9; // SPI1
+INT8U (*md380_spi_sendrecv)(INT8U data) = 0x0802fdc9; // SPI1
 
 
 
@@ -153,3 +153,5 @@ uint32_t *beep_process_unkown=0x2001d178;
 void (*md380_itow)(wchar_t *, int value)=0x080172ed;
 void (*md380_RTC_GetDate)(uint32_t RTC_Format, RTC_DateTypeDef *RTC_DateStruct)=0x08026461;
 void (*md380_RTC_GetTime)(uint32_t RTC_Format, RTC_TimeTypeDef* RTC_TimeStruct)=0x0802634b;
+
+uint32_t *md380_dmr_id=0x2001c65c;

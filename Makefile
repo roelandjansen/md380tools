@@ -16,8 +16,11 @@ firmwares:
 flash:
 	cd applet && make flash
 flashdb:
-	wc -c < db/users.csv > data ; cat db/users.csv >> data
-	md380-tool spiflashwrite data 0x100000
+	cd db && make clean update
+	cat db/users.csv | cut -d',' -f1-3,5-6 | sed 's/,\s+/,/g' > data.csv
+	wc -c < data.csv > data
+	cat data.csv >> data
+	./md380-tool spiflashwrite data 0x100000
 dist: applets
 	rm -rf $(RELEASE)
 	mkdir -p $(RELEASE)/python

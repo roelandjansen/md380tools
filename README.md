@@ -20,7 +20,8 @@ Development Tools:
 These tools are all wrapped into `Makefile`, which will download the
 official firmware, patch and flash it.  Run `make flash` after booting
 into the recovery bootloader by holding PTT and the button just above
-it during power-on.
+it during power-on.  Once device has been powered on, run `make flashdb`
+to write the DMR MARC user's database to SPI Flash memory.
 
 ##License:##
 
@@ -120,15 +121,22 @@ of the originally exported .ppm file; gimp et al. discard it):
 
     md380-gfx --firmware=patched.bin --gfx=0x80f9ca8-poc.ppm write
 
-To flash the Ham-DMR UserDB to SPI Flash.
+To flash the Ham-DMR UserDB to SPI Flash. **Works only on radios 
+with 16MByte SPI-Flash.**
     
     generate the upload file
     
        wc -c < db/users.csv > data ; cat db/users.csv >> data
     
-    programm to flash with: (verry experimental)
+    program to flash with: (very experimental)
     
        md380-tool spiflashwrite data 0x100000
+
+
+    or (all steps included): (very experimental)
+
+       make flashdb  
+    
 
 ##Firmware Compilation##
 
