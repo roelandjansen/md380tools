@@ -94,10 +94,10 @@ af+ 0x80145b8 102 Create_Menu_Entry_RX_QRG_3
 CCa 0x80145f8 with timeout
 
 af+ 0x8014648 622 Create_Menu_Entry_RX_QRG_4
- F_4301 .- spiflash_w 
- F_812 .- spfflash  read  bl F_260  spf  bl F_261 spf
+# F_4301 .- spiflash_w 
+# F_812 .- spfflash  read  bl F_260  spf  bl F_261 spf
 
- F_314 write to hw
+# F_314 write to hw
 
 
 af+ 0x800d9b0 18 F_4153
