@@ -314,7 +314,7 @@ if __name__== '__main__':
     merger.hookbl(0x0803ef64, sapplet.getadr("dmr_apply_privsquelch_hook"),0); #Private calls.
     merger.hookbl(0x0803eea0, sapplet.getadr("dmr_apply_squelch_hook"),0);     #Public calls.
 
-    """
+    
     merger.hookbl(0x0803b786, sapplet.getadr("OSMboxPost_hook_0x0803b786" ),0)
     merger.hookbl(0x0803b7a6, sapplet.getadr("OSMboxPost_hook_0x0803b7a6" ),0)
     merger.hookbl(0x0803b7f2, sapplet.getadr("OSMboxPost_hook_0x0803b7f2" ),0)
@@ -472,7 +472,7 @@ if __name__== '__main__':
     merger.hookbl(0x0808ceda, sapplet.getadr("OSMboxPost_hook_0x0808ceda" ),0)
     merger.hookbl(0x0808cf0c, sapplet.getadr("OSMboxPost_hook_0x0808cf0c" ),0)
     merger.hookbl(0x0808cfba, sapplet.getadr("OSMboxPost_hook_0x0808cfba" ),0)
-    """
+    
  
     #Throwaway hook to see if adr is called.
     #merger.hookstub(0x0803f03c,
