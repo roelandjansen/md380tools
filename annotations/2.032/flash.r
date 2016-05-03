@@ -2363,7 +2363,7 @@ f WelcomeLine1 4 @ 0x2001cecc
 fC WelcomeLine1 *Welcome_Line1
 f WelcomeLine2 4 @ 0x2001cee0
 
-
+CCa 0x802aa5c 0x24 end of rx (Roger beep)
 
 CCa 0x8044184 _Start Mbox_
 CCa 0x804910e _uC/OS-II TmrLock_
