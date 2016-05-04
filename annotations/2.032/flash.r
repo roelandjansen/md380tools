@@ -32,6 +32,7 @@ CCa 0x0803ee8a Value of 8 enables light, but audio is muted.
 
 
 
+
 CCa 0x800c000 0x2001dc10
 CCa 0x800c004 0x80fa969
 CCa 0x800c008 0x80937f1
@@ -86,20 +87,6 @@ CCa 0x800d970 0x2001d1a8 Time
 CCa 0x800d986 0x9d 157
 CCa 0x800d988 0x60 96
 CCa 0x800d98a 0x5f 95
-af+ 0x80143f4 104 Create_Menu_Entry_RX_QRG_shown
-af+ 0x8014464 214 Create_Menu_Entry_RX_QRG_1
-af+ 0x801453a 126 Create_Menu_Entry_RX_QRG_2
-
-af+ 0x80145b8 102 Create_Menu_Entry_RX_QRG_3
-CCa 0x80145f8 with timeout
-
-af+ 0x8014648 622 Create_Menu_Entry_RX_QRG_4
-# F_4301 .- spiflash_w 
-# F_812 .- spfflash  read  bl F_260  spf  bl F_261 spf
-
-# F_314 write to hw
-
-
 af+ 0x800d9b0 18 F_4153
 af+ 0x800d9cc 124 F_4220
 af+ 0x800da54 124 F_786
@@ -112,6 +99,7 @@ CCa 0x800ded8 ConfigData + 0x17 (byte) F_787
 af+ 0x800df84 996 Volume_Menu
 CCa 0x800dfd6 ... V.o.l.u.m.e
 CCa 0x800e016 glob. String ..Volume (0-9)
+CCa 0x800e028 Default 1 sec
 CCa 0x800e038 glob. String ..Volume (0-9)
 CCa 0x800e0ac set glob. String ..Volume (0-9)
 CCa 0x800e0cc V
@@ -137,7 +125,7 @@ af+ 0x800eb10 414 F_4144
 af+ 0x800ecc0 418 F_4145
 af+ 0x800ee94 1422 F_4143
 af+ 0x800f422 48 F_251
-af+ 0x800f452 18 F_5143
+af+ 0x800f452 18 Menu_Back
 af+ 0x800f464 32 F_86
 af+ 0x800f488 294 F_4155
 CCa 0x800f6b4 ... E.m.p.t.y
@@ -206,6 +194,12 @@ CCa 0x8012bc2 ConfigData + 1e (byte) F_5075
 CCa 0x8012bd2 ConfigData + 1f (byte) F_5075
 CCa 0x8012e58 ... W.r.o.n.g
 CCa 0x8012e9c ... P.a.s.s.w.o.r.d.
+af+ 0x80143f4 104 Create_Menu_Entry_RX_QRG_shown
+af+ 0x8014464 214 Create_Menu_Entry_RX_QRG_1
+af+ 0x801453a 126 Create_Menu_Entry_RX_QRG_2
+af+ 0x80145b8 102 Create_Menu_Entry_RX_QRG_3
+CCa 0x80145f8 with timeout
+af+ 0x8014648 622 Create_Menu_Entry_RX_QRG_4
 CCa 0x8014f4e S.a.v.e.d...I.n.b.o.x
 af+ 0x80152ec 198 Create_Menu_Entry_RadioInfo
 af+ 0x8015464 122 F_5076
@@ -2357,12 +2351,19 @@ af+ 0x8096c18 76 F_4542
 af+ 0x8096c64 50 F_4543
 af+ 0x8096c96 56 F_4544
 af+ 0x80f96b0 6 F_5074
+
+
 f ConfigData 0x50 @ 0x2001c658
 f WelcomeBMP 1 @ 0x80f9ca8 # size is not correct
 f WelcomeLine1 4 @ 0x2001cecc
 fC WelcomeLine1 *Welcome_Line1
 f WelcomeLine2 4 @ 0x2001cee0
-
+CCa 0x80295fa char * 0x2001d345  last pressed key
+CCa 0x8029600 green key
+CCa 0x8029604 up key
+CCa 0x8029608 down key
+CCa 0x802960c red key
+CCa 0x80295d4 Check if  keypad tone enabled
 CCa 0x802aa5c 0x24 end of rx (Roger beep)
 CCa 0x80295f6 Send make keypad tone to beep prozess
 CCa 0x8044184 _Start Mbox_
