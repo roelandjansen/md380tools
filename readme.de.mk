@@ -1,12 +1,14 @@
-====== Experimentelle Firmware von Travis Goodspeed - KK4VCZ ======
-===== Vorwort =====
+#Experimentelle Firmware von Travis Goodspeed - KK4VCZ
+
+
+##Vorwort
 Diese WIKI-Seiten versuchen, die experimentelle Firmware für das Tytera MD-380/Retevis RT-3 zu dokumentieren, die Features zu erläutern und die Installation zu erklären.
 
 Ein kurzer Rundgang durch die neue Firmware:
 {{youtube>u9QCJNWrF2I?large}}
 
-===== Installation =====
-<note>Nachfolgende Schritte beziehen sich ausschließlich auf die Vorgehensweise unter Linux. Auf anderen Betriebssystemen kann entsprechend eine andere Vorgehensweise notwendig werden.</note>
+##Installation
+Nachfolgende Schritte beziehen sich ausschließlich auf die Vorgehensweise unter Linux. Auf anderen Betriebssystemen kann entsprechend eine andere Vorgehensweise notwendig werden.
 ==== Voraussetzungen zur Installation ====
 Um das Github-Repository von Travis Goodspeed auf den eigenen Rechner zu bekommen und komfortabel Aktualisierungen einspielen zu können, ist die Installation des Programmpakets ''git'' notwendig. Ebenfalls sind zur erfolgreichen Übersetzung die Pakete ''gcc'' sowie die ''build-essentials'' wie auch ein ''arm-none-eabi Cross Compiler'' notwendig.
 
@@ -16,17 +18,17 @@ Ebenso sind zur Nutzung folgende Pakete erforderlich:
   * PyUSB 1.0: (0.4 does not work.) http://sourceforge.net/apps/mediawiki/pyusb/
   * libusb 1.0: (0.4 does not work.) http://www.libusb.org/
 
-==== Git-Repository klonen ====
+###Git-Repository klonen
 Mit dem Kommando
   git clone https://github.com/travisgoodspeed/md380tools.git
 wird in das aktuelle Verzeichnis eine aktuelle Kopie des Repositories erzeugt. Um dieses hin und wieder zu aktualisieren, braucht man im beim clone durch git angelegtem Verzeichnis nur ein
   git pull
 auszuführen.
 
-==== Berechtigungen zur Nutzung der USB-Schnittstelle ====
+###Berechtigungen zur Nutzung der USB-Schnittstelle
 Unter Linux ist es erforderlich, wenn man die Tools nicht immer mit ''sudo'' als root ausführen möchte, dass die Datei ''99-md380.rules'' im Hauptverzeichnis des Repositories nach ''/etc/udev/rules.d/'' kopiert wird. 
 
-==== Firmware übersetzen ====
+###Firmware übersetzen
 Um die Firmware zu übersetzen, führt man im obersten Verzeichnis des geklonten Repositories den Befehl
   make
 aus.
@@ -37,14 +39,15 @@ auf.
 
 <note tip>**Firmware mit dem Tytera Updater einspielen:**
 Die gepatchte Firmware lässt sich auch mit dem Tytera Updater unter Windows ins Funkgerät flashen. Hierzu nimmt man einfach die ''experiment.bin'' aus dem Verzeichnis ''applet'' und spielt diese mit dem Updater ein.</note>
-===== Bisher verfügbare Features =====
-==== Freischaltung des Empfangs aller Talkgroups und Private Calls ====
+
+##Bisher verfügbare Features
+###Freischaltung des Empfangs aller Talkgroups und Private Calls
 Die Firmware bietet seit Anfang an die Möglichkeit, sämtliche Talkgroups eines Repeaters, also nicht nur diejenigen, die in einer RX-Grouplist aufgeführt werden, sowie alle Private Calls, egal an welche ID, zu empfangen. Diese Funktion bietet die Möglichkeit, neben der Orientierung auf fremden Repeatern auch einen Bug der original Firmware ein wenig zu umgehen: Das Ignorieren des Admit Kriteriums. Durch die Tatsache, dass nun jede Talkgroup gehört werden kann, können Kollisionen mit anderen Signalen händisch vermieden werden.
 
-==== Verbesserter Zeichensatz ====
+###Verbesserter Zeichensatz
 Ebenfalls wurde der verwendete Zeichensatz der originalen Firmware durch einen wesentlich besser lesbaren Zeichensatz ersetzt. Hierdurch erfährt das recht billig wirkende Gerät einen echten Akzeptanz-Schub (durch die Optik der Darstellung).
 
-==== Einbindung eines eigenen Einschaltlogos ====
+###Einbindung eines eigenen Einschaltlogos
 Um ein eigenes Einschaltlogo (Welcome-Screen) zu aktivieren, muss man zunächst auf einem Linux-Rechner das Repository clonen. Ist dies geschehen, beginnt zunächst der kreative Part: Man öffnet ein Bildbearbeitungsprogramm, welches Grafiken im PPM-Format speichern kann - zum Beispiel [[https://www.gimp.org/|Gimp]]. Mit diesem Programm erzeugt man sich eine Grafik im 16-Farben-Modus und der Auflösung 160x40 Pixel. Hier kann man sich uns seiner Kreativität dann freien Lauf lassen.
 
 Ist der kreative Teil erledigt, speichert man, wie erwähnt, die Grafik im PPM-Format, als Beispiel jetzt mal unter dem Namen "0x80f9ca8-eigenes_logo.ppm" und öffnet diese in einem Hex-Editor, um entsprechende Kopfinformationen zu editieren.
@@ -76,7 +79,7 @@ zum einen die Firmware kompilieren und danach automatisch in das Funkgerät rein
 
 Sollte man mit der Grafik alles richtig gemacht haben, sollte man nun beim Einschalten sein eigenes Logo zu sehen bekommen.
 
-==== Bereitstellung des Kommandozeilen-Tools md380-tool ====
+####Bereitstellung des Kommandozeilen-Tools md380-tool
 Mit dem md380-tool können verschiedene Interaktionen mit dem Funkgerät über das USB-Programmierkabel vorgenommen werden. Nachfolgend eine kleine Erläuterung der Kommando-Parameter, die hinter den Programmaufruf gesetzt werden (Beispiel: ''md380-tool calllog''):
 
 ^ Parameter ^ Verwendung ^
@@ -99,7 +102,7 @@ Mit dem md380-tool können verschiedene Interaktionen mit dem Funkgerät über d
 | spiflashwrite <filename> <address> | Kopiert die angegebene Datei <filename> an die angegebene Speicheradresse <address> des SPI-Flashspeichers|
 | wc -c < db/users.csv > data ; cat db/users.csv >> data && md380-tool spiflashwrite data 0x100000 | Kopiert die User-Datenbank aus dem Repository in den SPI-Flashspeicher an die Adresse 0x100000 |
 
-==== Erweitertes Menü mit weiteren Funktionen ====
+###Erweitertes Menü mit weiteren Funktionen
 Die Firmware besitzt einen neuen Menüpunkt im Menü "Utilities" namens "Addl. Funct", was ein Kürzel für "Additional Functions" wäre, also hinzugefügte Funktionen.
 
 Die dort aufgeführten Menüpunkte wären derzeit folgende (mit nachfolgender Beschreibung)
@@ -111,7 +114,7 @@ Die dort aufgeführten Menüpunkte wären derzeit folgende (mit nachfolgender Be
 | Promiscuous | Aktiviert/deaktiviert (aktuell noch nicht getestet von mir) die Monitoring-Funktion (siehe [[dmr:tytera_tyt_md-380:experimentelle_firmware_von_travis_goodspeed_-_kk4vcz#Freischaltung des Empfangs aller Talkgroups und Private Calls|Freischaltung des Empfangs aller Talkgroups und Private Calls]]) |
 | Edit DMR-ID | Ändern der DMR-ID des Funkgerätes bis zum nächsten Ausschalten des Gerätes. Nach dem Einschalten ist wieder die ID aus dem Codeplug aktiv. |
 
-==== Aktivierung der User-Datenbank ====
+###Aktivierung der User-Datenbank
 <note warning>**Wichtiger Hinweis:** Diese Funktion sollte nur auf Funkgeräten mit 16 MB SPI-Flashspeicher (nach aktuellen Erkenntnissen in der Regel UHF-Geräte) ausgeführt werden, da auf 1 MB-Geräten (in der Regel VHF-Geräte) der Codeplug bei älteren Versionen des Quellcodes (vor dem 28.04.2016) überschrieben wird und ggf. das Funkgerät hierdurch zunächst nicht mehr nutzbar wird.</note>
 Zuerst wechselt man dann in das Verzeichnis ''db'' und führt dort ein
 
