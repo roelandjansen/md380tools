@@ -1,18 +1,18 @@
-#Experimentelle Firmware von Travis Goodspeed - KK4VCZ
+#Experimentelle Firmware 
+
+von Travis Goodspeed, KK4VCZ
 
 
 ##Vorwort
 Diese Seite versucht die experimentelle Firmware für das Tytera MD-380/Retevis RT-3 zu dokumentieren, die Features zu erläutern und die Installation zu erklären.
 
-Ein kurzer Rundgang durch die neue Firmware:
-{{youtube>u9QCJNWrF2I?large}}
-
 Übersetzung durch Kim - DG9VH
 
 ##Installation
 Nachfolgende Schritte beziehen sich ausschließlich auf die Vorgehensweise unter Linux. Auf anderen Betriebssystemen kann entsprechend eine andere Vorgehensweise notwendig werden.
-==== Voraussetzungen zur Installation ====
-Um das Github-Repository von Travis Goodspeed auf den eigenen Rechner zu bekommen und komfortabel Aktualisierungen einspielen zu können, ist die Installation des Programmpakets ''git'' notwendig. Ebenfalls sind zur erfolgreichen Übersetzung die Pakete ''gcc'' sowie die ''build-essentials'' wie auch ein ''arm-none-eabi Cross Compiler'' notwendig.
+
+###Voraussetzungen zur Installation
+Um das Github-Repository von Travis Goodspeed auf den eigenen Rechner zu bekommen und komfortabel Aktualisierungen einspielen zu können, ist die Installation des Programmpakets `git` notwendig. Ebenfalls sind zur erfolgreichen Übersetzung die Pakete `gcc` sowie die `build-essentials` wie auch ein `arm-none-eabi Cross Compiler` notwendig.
 
 Ebenso sind zur Nutzung folgende Pakete erforderlich:
 
@@ -22,9 +22,9 @@ Ebenso sind zur Nutzung folgende Pakete erforderlich:
 
 ###Git-Repository klonen
 Mit dem Kommando
- git clone https://github.com/travisgoodspeed/md380tools.git
+ `git clone https://github.com/travisgoodspeed/md380tools.git`
 wird in das aktuelle Verzeichnis eine aktuelle Kopie des Repositories erzeugt. Um dieses hin und wieder zu aktualisieren, braucht man im beim clone durch git angelegtem Verzeichnis nur ein
- git pull
+ `git pull`
 auszuführen.
 
 ###Berechtigungen zur Nutzung der USB-Schnittstelle
