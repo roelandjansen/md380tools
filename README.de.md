@@ -12,7 +12,7 @@ Diese Seite versucht die experimentelle Firmware für das Tytera MD-380/Retevis 
 Nachfolgende Schritte beziehen sich ausschließlich auf die Vorgehensweise unter Linux. Auf anderen Betriebssystemen kann entsprechend eine andere Vorgehensweise notwendig werden.
 
 ###Voraussetzungen zur Installation
-Um das Github-Repository von Travis Goodspeed auf den eigenen Rechner zu bekommen und komfortabel Aktualisierungen einspielen zu können, ist die Installation des Programmpakets `git` notwendig. Ebenfalls sind zur erfolgreichen Übersetzung die Pakete `gcc` sowie die `build-essentials` wie auch ein `arm-none-eabi Cross Compiler` notwendig.
+Um das Github-Repository von Travis Goodspeed auf den eigenen Rechner zu bekommen und komfortabel Aktualisierungen einspielen zu können, ist die Installation des Programmpakets `git` notwendig. Ebenfalls sind zur erfolgreichen Übersetzung die Pakete `gcc` sowie die `build-essentials` wie auch ein `arm-none-eabi` Cross Compiler notwendig.
 
 Ebenso sind zur Nutzung folgende Pakete erforderlich:
 
@@ -28,15 +28,17 @@ wird in das aktuelle Verzeichnis eine aktuelle Kopie des Repositories erzeugt. U
 auszuführen.
 
 ###Berechtigungen zur Nutzung der USB-Schnittstelle
-Unter Linux ist es erforderlich, wenn man die Tools nicht immer mit ''sudo'' als root ausführen möchte, dass die Datei ''99-md380.rules'' im Hauptverzeichnis des Repositories nach ''/etc/udev/rules.d/'' kopiert wird. 
+Unter Linux ist es erforderlich, wenn man die Tools nicht immer mit 'sudo' als root ausführen möchte, dass die Datei `99-md380.rules` im Hauptverzeichnis des Repositories nach `/etc/udev/rules.d/` kopiert wird. 
 
 ###Firmware übersetzen
 Um die Firmware zu übersetzen, führt man im obersten Verzeichnis des geklonten Repositories den Befehl
-  make
+
+ `make`
+
 aus.
 
 Möchte man nach der Übersetzung gleich die neue Firmware in das Funkgerät flashen, so schaltet man das Funkgerät mit gedrückter PTT-Taste und der oberen Funktionstaste in den Flash-Modus, schließt es mit dem Programmierkabel am Computer an und ruft den Befehl
-  make flash
+ `make flash`
 auf.
 
 <note tip>**Firmware mit dem Tytera Updater einspielen:**
@@ -50,33 +52,34 @@ Die Firmware bietet seit Anfang an die Möglichkeit, sämtliche Talkgroups eines
 Ebenfalls wurde der verwendete Zeichensatz der originalen Firmware durch einen wesentlich besser lesbaren Zeichensatz ersetzt. Hierdurch erfährt das recht billig wirkende Gerät einen echten Akzeptanz-Schub (durch die Optik der Darstellung).
 
 ###Einbindung eines eigenen Einschaltlogos
-Um ein eigenes Einschaltlogo (Welcome-Screen) zu aktivieren, muss man zunächst auf einem Linux-Rechner das Repository clonen. Ist dies geschehen, beginnt zunächst der kreative Part: Man öffnet ein Bildbearbeitungsprogramm, welches Grafiken im PPM-Format speichern kann - zum Beispiel [[https://www.gimp.org/|Gimp]]. Mit diesem Programm erzeugt man sich eine Grafik im 16-Farben-Modus und der Auflösung 160x40 Pixel. Hier kann man sich uns seiner Kreativität dann freien Lauf lassen.
+Um ein eigenes Einschaltlogo (Welcome-Screen) zu aktivieren, muss man zunächst auf einem Linux-Rechner das Repository clonen. Ist dies geschehen, beginnt zunächst der kreative Part: Man öffnet ein Bildbearbeitungsprogramm, welches Grafiken im PPM-Format speichern kann - zum Beispiel (https://www.gimp.org) Gimp. Mit diesem Programm erzeugt man sich eine Grafik im 16-Farben-Modus und der Auflösung 160x40 Pixel. Hier kann man sich uns seiner Kreativität dann freien Lauf lassen.
 
 Ist der kreative Teil erledigt, speichert man, wie erwähnt, die Grafik im PPM-Format, als Beispiel jetzt mal unter dem Namen "0x80f9ca8-eigenes_logo.ppm" und öffnet diese in einem Hex-Editor, um entsprechende Kopfinformationen zu editieren.
 
 Man ersetzt die Passage:
-  P6
-  # CREATOR: GIMP PNM Filter Version 1.1
-  160 40
-  255
-  
+> P6
+> # CREATOR: GIMP PNM Filter Version 1.1
+> 160 40
+> 255
+
 durch
-  P6
-  # MD380 address: 0x80f9ca8
-  # MD380 checksum: -941681526
-  160 40
-  255
+> P6
+> # MD380 address: 0x80f9ca8
+> # MD380 checksum: -941681526
+> 160 40
+> 255
 
 Ein Beispiel einer fertigen ppm-Datei, die man als Einschaltlogo verwenden kann, findet man hier: {{:dmr:tytera_tyt_md-380:0x80f9ca8-saar-edition.zip|}}
 
 Nach den besagten Änderungen kopiert man die bearbeitete PPM-Datei in das Verzeichnis ''md380tools/patches/2.032'' und trägt die Grafikdatei in das Makefile ein, indem man folgende Zeile einfügt und die entsprechend voerher aktive Zeile mit einer # auskommentiert:
 
-  ../../md380-gfx --firmware=patched.img --gfx=0x80f9ca8-eigenes_logo.ppm relocate
-  
+> ../../md380-gfx --firmware=patched.img --gfx=0x80f9ca8-eigenes_logo.ppm relocate
+ 
 Ist dies erledigt, kann man im Grunde im Verzeichnis md380tools, nachdem man das Funkgerät per drücken der PTT und der oberen Menütaste beim Einschalten in den Flash-Mode geschaltet hat und das Programmierkabel an das Funkgerät wie auch an den PC angesteckt hat, per 
 
-  make flash
-  
+> make flash
+
+
 zum einen die Firmware kompilieren und danach automatisch in das Funkgerät reinflashen.
 
 Sollte man mit der Grafik alles richtig gemacht haben, sollte man nun beim Einschalten sein eigenes Logo zu sehen bekommen.
