@@ -878,6 +878,13 @@ CCa 0x80294ec Get ConfigData + 0x2  (byte) F_4137
 CCa 0x80295a6 Get ConfigData + 0x2  (byte) F_4137
 CCa 0x80295d2 Get ConfigData + 0x2  (byte) F_4137
 CCa 0x80295d2 Get ConfigData + 0x2  (byte) F_4137
+CCa 0x80295d4 Check if  keypad tone enabled
+CCa 0x80295f6 Send make keypad tone to beep prozess
+CCa 0x80295fa char * 0x2001d345  last pressed key
+CCa 0x8029600 green key
+CCa 0x8029604 up key
+CCa 0x8029608 down key
+CCa 0x802960c red key
 CCa 0x8029778 Get ConfigData + 0x2  (byte) F_4137
 af+ 0x8029810 104 F_4241
 af+ 0x8029898 156 F_4242
@@ -913,6 +920,7 @@ af+ 0x802a918 36 F_291
 CCa 0x802a91c ConfigData + 0x1  (byte) ubfx r0, r0, 2, 1 .. lsls r0, r0, 0x1f F_291
 af+ 0x802a93c 24 F_292
 af+ 0x802a960 4084 Beep_Process
+CCa 0x802aa5c 0x24 end of rx (Roger beep)
 CCa 0x802af8e ConfigData + 0xf  (byte) Beep_Process
 CCa 0x802af9c ConfigData + 0xf  (byte) Beep_Process
 af+ 0x802b958 236 F_5027
@@ -2358,14 +2366,6 @@ f WelcomeBMP 1 @ 0x80f9ca8 # size is not correct
 f WelcomeLine1 4 @ 0x2001cecc
 fC WelcomeLine1 *Welcome_Line1
 f WelcomeLine2 4 @ 0x2001cee0
-CCa 0x80295fa char * 0x2001d345  last pressed key
-CCa 0x8029600 green key
-CCa 0x8029604 up key
-CCa 0x8029608 down key
-CCa 0x802960c red key
-CCa 0x80295d4 Check if  keypad tone enabled
-CCa 0x802aa5c 0x24 end of rx (Roger beep)
-CCa 0x80295f6 Send make keypad tone to beep prozess
 CCa 0x8044184 _Start Mbox_
 CCa 0x804910e _uC/OS-II TmrLock_
 CCa 0x804911a _uC/OS-II TmrSignal_

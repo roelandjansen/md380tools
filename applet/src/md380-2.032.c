@@ -104,7 +104,6 @@ void (*OSSemPend)(OS_EVENT *pevent, uint32_t timeout,  uint8_t *perr)=0x803da78+
 uint8_t (*OSSemPost)(OS_EVENT *pevent)=0x803db68+1;
 
 uint8_t (*md380_OSMboxPost)(OS_EVENT *pevent, void *pmsg)=0x080303b4+1;
-  
 
 //! Functions and Variabes regarding the menu
 void     *(*main_menu)(void *)=0x08039c23;
