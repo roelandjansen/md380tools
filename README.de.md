@@ -7,6 +7,8 @@ Diese Seite versucht die experimentelle Firmware für das Tytera MD-380/Retevis 
 Ein kurzer Rundgang durch die neue Firmware:
 {{youtube>u9QCJNWrF2I?large}}
 
+Übersetzung durch Kim - DG9VH
+
 ##Installation
 Nachfolgende Schritte beziehen sich ausschließlich auf die Vorgehensweise unter Linux. Auf anderen Betriebssystemen kann entsprechend eine andere Vorgehensweise notwendig werden.
 ==== Voraussetzungen zur Installation ====
