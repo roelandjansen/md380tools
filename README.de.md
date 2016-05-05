@@ -58,14 +58,14 @@ Ist der kreative Teil erledigt, speichert man, wie erwähnt, die Grafik im PPM-F
 
 Man ersetzt die Passage:
 > P6
-> # CREATOR: GIMP PNM Filter Version 1.1
+> \# CREATOR: GIMP PNM Filter Version 1.1
 > 160 40
 > 255
 
 durch
 > P6
-> # MD380 address: 0x80f9ca8
-> # MD380 checksum: -941681526
+> \# MD380 address: 0x80f9ca8
+> \# MD380 checksum: -941681526
 > 160 40
 > 255
 
