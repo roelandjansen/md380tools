@@ -58,15 +58,22 @@ Ist der kreative Teil erledigt, speichert man, wie erwähnt, die Grafik im PPM-F
 
 Man ersetzt die Passage:
 > P6
+
 > \# CREATOR: GIMP PNM Filter Version 1.1
+
 > 160 40
+
 > 255
 
 durch
 > P6
+
 > \# MD380 address: 0x80f9ca8
+
 > \# MD380 checksum: -941681526
+
 > 160 40
+
 > 255
 
 Ein Beispiel einer fertigen ppm-Datei, die man als Einschaltlogo verwenden kann, findet man hier: {{:dmr:tytera_tyt_md-380:0x80f9ca8-saar-edition.zip|}}
