@@ -159,7 +159,9 @@ im Hauptverzeichnis des Repositories genutzt werden, der all diese Befehle komfo
 
 Besitzt man ein Gerät mit zu kleinem SPI-Flashspeicher (siehe Hinweis oben), erhält man seit dem 28.04.2016 folgende Meldung:
 > SPI Flash ID: ef 40 14
+
 > W25Q80BL 1MByte
+
 > can't programm spi flash wrong flash type
 
 Während des Flash-Vorgangs schaltet das Funkgerät in den USB-Programmiermodus - nach erfolgtem Schreiben der Daten startet das Funkgerät automatisch neu und man kann es vom Programmierkabel trennen.
