@@ -30,8 +30,24 @@ CCa 0x0803ee66 Value of 9 enables audio reception.
 CCa 0x0803ee8a Value of 8 enables light, but audio is muted.
 
 
+CCa 0x80281f8 ... B.a.c.k.
+CCa 0x80281d8 ... C.o.n.f.i.r.m
+CCa 0x8027bae ... D.i.s.a.b.l.e.d
+CCa 0x804462a Loop RTC_Timer
+CCa 0x802828e last pressed key
 
-
+CCa 0x804463a F_80_wtf an OS Function  
+CCa 0x804463e F_4500 -
+CCa 0x8044642 F_4098 many function calls ... runs all functions
+CCa 0x8044646 This_function_called_Read_Channel_Switch
+CCa 0x804464a F_4520 something with keyboard                                                         
+CCa 0x804464e F_4495 ?
+CCa 0x8044658 F_4507 nothing
+CCa 0x804465e F_4170 display?
+CCa 0x8044662 F_4225 vip
+CCa 0x8044666 F_4505
+CCa 0x804466a F_4501
+CCa 0x804466e F_626
 
 CCa 0x800c000 0x2001dc10
 CCa 0x800c004 0x80fa969
@@ -72,7 +88,7 @@ af+ 0x800d66c 178 F_4139
 af+ 0x800d730 2 F_4147
 af+ 0x800d732 188 F_4283
 af+ 0x800d7f4 114 F_4038
-af+ 0x800d86c 30 F_4039
+af+ 0x800d86c 30 F_4039_something_write_to_screen
 af+ 0x800d88a 36 gfx_drawtext
 af+ 0x800d8ae 254 F_785_Print_Date_and_Time
 CCa 0x800d8ca 0x2001d1ac Date

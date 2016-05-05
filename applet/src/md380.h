@@ -179,3 +179,8 @@ extern void  (*md380_RTC_GetDate)(uint32_t RTC_Format, RTC_DateTypeDef *RTC_Date
 extern void  (*md380_RTC_GetTime)(uint32_t RTC_Format, RTC_TimeTypeDef* RTC_TimeStruct);
 
 extern uint32_t *md380_dmr_id;
+
+extern void (*md380_f_4137)();
+extern void (*md380_f_4520)();
+extern void (*md380_f_4098)();
+extern void (*md380_f_4102)();

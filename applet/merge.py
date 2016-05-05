@@ -343,6 +343,18 @@ if __name__== '__main__':
     #merger.hookstub(0x0803f03c,
     #                sapplet.getadr("demo"));
 
+    f_4137_hook_list=[
+        0x8027fe2, 0x8028288, 0x8028298, 0x80282f0];
+    for adr in f_4137_hook_list:
+        merger.hookbl(adr,sapplet.getadr("f_4137_hook"),0);
+        
+#    merger.hookbl(0x804464a,sapplet.getadr("f_4520_hook"),0);
+
+#    merger.hookbl(0x8044642,sapplet.getadr("f_4098_hook"),0);
+#    merger.hookbl(0x804c1e8,sapplet.getadr("f_4102_hook"),0);
+
+    merger.hookbl(0x0801f064,sapplet.getadr("f_4225_internel_hook"),0);
+
     print "Merging %s into %s at %08x" % (
           sys.argv[2],
           sys.argv[1],
