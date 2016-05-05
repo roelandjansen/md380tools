@@ -133,35 +133,35 @@ Edit DMR-ID | Ändern der DMR-ID des Funkgerätes bis zum nächsten Ausschalten 
 **Wichtiger Hinweis:** Diese Funktion sollte nur auf Funkgeräten mit 16 MB SPI-Flashspeicher (nach aktuellen Erkenntnissen in der Regel UHF-Geräte) ausgeführt werden, da auf 1 MB-Geräten (in der Regel VHF-Geräte) der Codeplug bei älteren Versionen des Quellcodes (vor dem 28.04.2016) überschrieben wird und ggf. das Funkgerät hierdurch zunächst nicht mehr nutzbar wird.</note>
 Zuerst wechselt man dann in das Verzeichnis ''db'' und führt dort ein
 
- make clean 
+> make clean 
 
 und ein 
 
- make 
+> make 
 
 aus, um die User-Datenbank relativ tagesaktuell zu halten (Datenquelle ist hier die DMR-MARC-DB).
 
 Im Verzeichnis ''md380tools'' führt man dann wieder den Befehl:
 
- wc -c < db/users.csv > data ; cat db/users.csv >> data
+> wc -c < db/users.csv > data ; cat db/users.csv >> data
 
 und danach
 
- ./md380-tool spiflashwrite data 0x100000
+> ./md380-tool spiflashwrite data 0x100000
 
 aus, was die User-Datenbank in das im Normalbetrieb befindliche und mit dem Programmierkabel am PC angeschlossene Funkgerät flasht.
 
 Alternativ kann auch der Befehl
 
- make flashdb
+> make flashdb
 
-im Hauptverzeichnis des Repositories genutzt werden, der all diese Befehle komfortabel am Stück erledigt.
+im Hauptverzeichnis des Repositories genutzt werden, der all diese Befehle komfortabel am Stück erledigt. Dies ist der empfohlene Weg.
 
 Besitzt man ein Gerät mit zu kleinem SPI-Flashspeicher (siehe Hinweis oben), erhält man seit dem 28.04.2016 folgende Meldung:
- SPI Flash ID: ef 40 14
- W25Q80BL 1MByte
- can't programm spi flash wrong flash type
+> SPI Flash ID: ef 40 14
+> W25Q80BL 1MByte
+> can't programm spi flash wrong flash type
 
 Während des Flash-Vorgangs schaltet das Funkgerät in den USB-Programmiermodus - nach erfolgtem Schreiben der Daten startet das Funkgerät automatisch neu und man kann es vom Programmierkabel trennen.
 
-Nach dem Flash-Vorgang muss im Menü des Funkgerätes die Userdatenbank wie unter [[dmr:tytera_tyt_md-380:experimentelle_firmware_von_travis_goodspeed_-_kk4vcz#erweitertes_menue_mit_weiteren_funktionen|erweiteres Menü mit weiteren Funktionen]] beschrieben aktiviert werden.
+Nach dem Flash-Vorgang muss im Menü des Funkgerätes die Userdatenbank wie unter **Erweitertes Menü mit weiteren Funktionen beschrieben** aktiviert werden.
