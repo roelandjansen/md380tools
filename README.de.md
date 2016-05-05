@@ -80,11 +80,11 @@ Ein Beispiel einer fertigen ppm-Datei, die man als Einschaltlogo verwenden kann,
 
 Nach den besagten Änderungen kopiert man die bearbeitete PPM-Datei in das Verzeichnis ''md380tools/patches/2.032'' und trägt die Grafikdatei in das Makefile ein, indem man folgende Zeile einfügt und die entsprechend voerher aktive Zeile mit einer # auskommentiert:
 
-> ../../md380-gfx --firmware=patched.img --gfx=0x80f9ca8-eigenes_logo.ppm relocate
+ `../../md380-gfx --firmware=patched.img --gfx=0x80f9ca8-eigenes_logo.ppm relocate`
  
 Ist dies erledigt, kann man im Grunde im Verzeichnis md380tools, nachdem man das Funkgerät per drücken der PTT und der oberen Menütaste beim Einschalten in den Flash-Mode geschaltet hat und das Programmierkabel an das Funkgerät wie auch an den PC angesteckt hat, per 
 
-> make flash
+ `make flash`
 
 
 zum einen die Firmware kompilieren und danach automatisch in das Funkgerät reinflashen.
@@ -133,27 +133,27 @@ Edit DMR-ID | Ändern der DMR-ID des Funkgerätes bis zum nächsten Ausschalten 
 **Wichtiger Hinweis:** Diese Funktion sollte nur auf Funkgeräten mit 16 MB SPI-Flashspeicher (nach aktuellen Erkenntnissen in der Regel UHF-Geräte) ausgeführt werden, da auf 1 MB-Geräten (in der Regel VHF-Geräte) der Codeplug bei älteren Versionen des Quellcodes (vor dem 28.04.2016) überschrieben wird und ggf. das Funkgerät hierdurch zunächst nicht mehr nutzbar wird.</note>
 Zuerst wechselt man dann in das Verzeichnis ''db'' und führt dort ein
 
-> make clean 
+ `make clean`
 
 und ein 
 
-> make 
+ `make`
 
 aus, um die User-Datenbank relativ tagesaktuell zu halten (Datenquelle ist hier die DMR-MARC-DB).
 
 Im Verzeichnis ''md380tools'' führt man dann wieder den Befehl:
 
-> wc -c < db/users.csv > data ; cat db/users.csv >> data
+ `wc -c < db/users.csv > data ; cat db/users.csv >> data`
 
 und danach
 
-> ./md380-tool spiflashwrite data 0x100000
+ `./md380-tool spiflashwrite data 0x100000`
 
 aus, was die User-Datenbank in das im Normalbetrieb befindliche und mit dem Programmierkabel am PC angeschlossene Funkgerät flasht.
 
 Alternativ kann auch der Befehl
 
-> make flashdb
+ `make flashdb`
 
 im Hauptverzeichnis des Repositories genutzt werden, der all diese Befehle komfortabel am Stück erledigt. Dies ist der empfohlene Weg.
 
