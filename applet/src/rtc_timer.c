@@ -11,6 +11,27 @@
 #include "string.h"
 #include "addl_config.h"
 
+// this hook switcht of the exit from the menu in case of RX
+void * f_4225_internel_hook() {
+  static int flag=0;
+  printf("%x \n", *md380_f_4225_operatingmode);
+
+  if (global_addl_config.experimental == 1) {  
+    if (*md380_f_4225_operatingmode == md380_f_4225_operatingmode_menu) { 
+      flag=1;
+    }
+    if (*md380_f_4225_operatingmode == md380_f_4225_operatingmode_menu_exit) {
+      flag=0;
+    }    
+    if (flag == 1) {
+      *md380_f_4225_operatingmode=md380_f_4225_operatingmode_menu;
+    }
+  }     
+  return(md380_f_4225_operatingmode);
+}
+
+
+// Lab hooks - for training only :)
 
 void f_4137_hook() {
   void *return_addr;
@@ -47,23 +68,4 @@ void f_4102_hook() {
   __asm__("mov %0,r13" : "=r" (sp));
   printf("Call md380_f_4102 from r: %x s: %x\n", return_addr,sp);
   md380_f_4102();
-}
-
-
-void * f_4225_internel_hook() {
-  char * ret;
-  static f=0;
-  ret=(char *)0x2001d3f7;
-  printf("%x \n", *ret);
-  
-  if (*ret == 0x1b) { 
-    f=1;
-  }
-  if (*ret == 0x1c) {
-    f=0;
-  }    
-  if (f == 1) {
-    *ret=0x1b;
-  }   
-  return(ret);
 }
