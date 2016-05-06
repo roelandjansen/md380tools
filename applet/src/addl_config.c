@@ -53,8 +53,7 @@ void init_global_addl_config_struct() {
   } else {
     global_addl_config.promtg=0;
   }
-  
-  // global_addl_config.experimental is intentionally not permanent 
+  // global_addl_config.experimental is intentionally not permanent
   global_addl_config.experimental = 0;
 }
 

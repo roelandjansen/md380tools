@@ -1706,11 +1706,11 @@ af+ 0x8044548 300 RTC_Timer
 CCa 0x804454e Get ConfigData + 0x2  (byte) ubfx r0, r0, 4, 1 .. lsls r0, r0, 0x1f  RTC_Timer
 CCa 0x8044550 Bit 4
 CCa 0x804462a Loop RTC_Timer
-CCa 0x804463a F_80_wtf an OS Function  
+CCa 0x804463a F_80_wtf an OS Function
 CCa 0x804463e F_4500 -
 CCa 0x8044642 F_4098 many function calls ... runs all functions
 CCa 0x8044646 This_function_called_Read_Channel_Switch
-CCa 0x804464a F_4520 something with keyboard                                                         
+CCa 0x804464a F_4520 something with keyboard
 CCa 0x804464e F_4495 ?
 CCa 0x8044658 F_4507 nothing
 CCa 0x804465e F_4170 display?

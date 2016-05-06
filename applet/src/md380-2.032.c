@@ -174,5 +174,5 @@ void (*md380_f_4098)()=0x0804c1d0+1;
 void (*md380_f_4102)()=0x0804c2aa+1;
 
 uint8_t *md380_f_4225_operatingmode=0x2001d3f7;
-uint8_t md380_f_4225_operatingmode_menu=0x1b;       // see 0x0801f06a there are a lot of modes 
+uint8_t md380_f_4225_operatingmode_menu=0x1b;       // see 0x0801f06a there are a lot of modes
 uint8_t md380_f_4225_operatingmode_menu_exit=0x1c;
