@@ -128,6 +128,7 @@ void f_4225_hook() {
     gfx_blockfill( 9, 59, 131 , 66);
     gfx_set_fg_color(0xff8032);  
     gfx_set_bg_color(0xff000000);
+    bla=0;
    }
     
   md380_f_4225 ();  
