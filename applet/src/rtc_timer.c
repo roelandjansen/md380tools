@@ -12,9 +12,11 @@
 #include "addl_config.h"
 #include "ambe.h"
 
+
+  static int flag=0;
+
 // this hook switcht of the exit from the menu in case of RX
 void * f_4225_internel_hook() {
-  static int flag=0;
 #ifdef DEBUG  
   printf("%x \n", *md380_f_4225_operatingmode);
 #endif
@@ -77,9 +79,13 @@ void f_4225_hook() {
   int blabla;
   static blablabla;
   int i;  
+
+  printf("%x \n", *md380_f_4225_operatingmode);
+//  if (flag==1 && *md380_f_4225_operatingmode ==0x9c) *md380_f_4225_operatingmode=md380_f_4225_operatingmode_menu;
+  
   // 20000
   if (bla != max_level) {
-    if ( *md380_f_4225_operatingmode == 0x11 && max_level < 4500 ) {
+    if ( *md380_f_4225_operatingmode == 0x11 && max_level < 4500 &&  max_level > 100) {
       bla = max_level;
       i=0;
       blabla=bla;
