@@ -184,6 +184,7 @@ extern void (*md380_f_4137)();
 extern void (*md380_f_4520)();
 extern void (*md380_f_4098)();
 extern void (*md380_f_4102)();
+extern void( *md380_f_4225)();
 
 extern uint8_t *md380_f_4225_operatingmode;
 extern uint8_t md380_f_4225_operatingmode_menu;

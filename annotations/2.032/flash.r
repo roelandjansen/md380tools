@@ -608,27 +608,27 @@ af+ 0x801f03c 8 F_4292
 af+ 0x801f044 5240 F_4225
 CCa 0x801f228 GPIO_SetBits(GPIOC, 0x40) .. Bit 3 .. C3  2T/5T / RF_RX_INTER
 CCa 0x801f236 ConfigData + 0x15 (byte) F_4225
-CCa 0x801f334 GPIO_SetBits(GPIOC, 0x40)
+CCa 0x801f334 GPIO_SetBits(GPIOC, 0x40) LAMP ON
 CCa 0x801f342 ConfigData + 0x15 (byte) F_4225
-CCa 0x801f3b0 GPIO_SetBits(GPIOC, 0x40)
+CCa 0x801f3b0 GPIO_SetBits(GPIOC, 0x40) LAMP ON
 CCa 0x801f3be ConfigData + 0x15 (byte) F_4225
-CCa 0x801f40c GPIO_SetBits(GPIOC, 0x40)
+CCa 0x801f40c GPIO_SetBits(GPIOC, 0x40) LAMP ON
 CCa 0x801f41a ConfigData + 0x15 (byte) F_4225
 CCa 0x801f55c ConfigData + 0xa  (byte) F_4225
 CCa 0x801f57c ConfigData + 0x9  (byte) F_4225
 CCa 0x801f5b6 sprite telephone
 CCa 0x801f7de ConfigData + 0x16 (byte) F_4225
 CCa 0x801f818 ConfigData + 0x16 (byte) F_4225
-CCa 0x801f878 GPIO_SetBits(GPIOC, 0x40)
+CCa 0x801f878 GPIO_SetBits(GPIOC, 0x40) LAMP ON
 CCa 0x801f886 ConfigData + 0x0  (byte) F_4225
 CCa 0x801f890 ConfigData + 0x0  (byte) F_4225
 CCa 0x801f99a ConfigData + 0x15 (byte) F_4225
 CCa 0x801fc06 ConfigData + 0x1  (byte) F_4225
 CCa 0x801fc9c ConfigData + 0x16 (byte) F_4225
 CCa 0x801fd14 ConfigData + 0x16 (byte) F_4225
-CCa 0x801ffda GPIO_SetBits(GPIOC, 0x40)
+CCa 0x801ffda GPIO_SetBits(GPIOC, 0x40) LAMP ON
 CCa 0x801ffe8 ConfigData + 0x15 (byte) F_4225
-CCa 0x80201c0 GPIO_SetBits(GPIOC, 0x40)
+CCa 0x80201c0 GPIO_SetBits(GPIOC, 0x40) LAMP ON
 CCa 0x80201ce ConfigData + 0x15 (byte) F_4225
 CCa 0x802045c 0x2001cfe4 signal strength (byte) 0-5
 CCa 0x802046a 0x2001cfe4 signal strength (byte) 0-5
@@ -991,6 +991,7 @@ af+ 0x802a960 4084 Beep_Process
 CCa 0x802aa5c 0x24 end of rx (Roger beep)
 CCa 0x802af8e ConfigData + 0xf  (byte) Beep_Process
 CCa 0x802af9c ConfigData + 0xf  (byte) Beep_Process
+CCa 0x802b892 DTMF key code
 af+ 0x802b958 236 F_5027
 af+ 0x802ba44 52 F_293
 af+ 0x802ba78 16 F_294

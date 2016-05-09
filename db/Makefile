@@ -1,3 +1,5 @@
+export LC_CTYPE=C
+export LANG=C
 
 
 update: users.csv
