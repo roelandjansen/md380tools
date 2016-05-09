@@ -95,10 +95,10 @@ void f_4225_hook() {
       gfx_blockfill( 9, 49, 111 , 56);  
       gfx_blockfill( 9, 59, 131 , 66);  
 
-      if (max_level > 4000) {
+      if (max_level > 2000) {
         gfx_set_fg_color(0x0000ff);
       } 
-      else if (max_level > 1000 ) {
+      else if (max_level > 200 ) {
         gfx_set_fg_color(0x00ff00);
       } else {
         gfx_set_fg_color(0x555555);
