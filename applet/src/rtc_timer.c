@@ -1,4 +1,4 @@
-/**md380_f_4225_operatingmode! \file gfx.c
+/*  \file rtc_timer.c
   \brief wrapper functions for the "RTC Timer"-Task.
 */
 
@@ -74,9 +74,9 @@ void f_4102_hook() {
   md380_f_4102();
 }
 
-    // Takes a positive(!) integer amplitude and computes 200*log10(amp),
-	// centi Bel, approximtely. If the given parameter is 0 or less, this
-	    // function returns -1.
+// Takes a positive(!) integer amplitude and computes 200*log10(amp),
+// centi Bel, approximtely. If the given parameter is 0 or less, this
+// function returns -1.  tnx to sellibitze
 int intCentibel(long ampli)
 {
     if (ampli <= 0)
