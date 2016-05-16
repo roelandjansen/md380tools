@@ -6,3 +6,4 @@ extern int ambe_decode_wav_hook(int *a1, signed int eighty, char *bitbuffer,
 			 int a4, short a5, short a6, int a7);
 
 extern int max_level;
+extern uint32_t ambe_encode_frame_cnt;   

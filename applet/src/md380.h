@@ -174,7 +174,7 @@ extern int (*ambe_decode_wav)(int *a1, signed int eighty, char *bitbuffer,
 extern uint32_t *beep_process_unkown;
 
 //! useful firmware functions
-extern void  (*md380_itow)(wchar_t *, int value);
+extern wchar_t * (*md380_itow)(wchar_t *, int value);
 extern void  (*md380_RTC_GetDate)(uint32_t RTC_Format, RTC_DateTypeDef *RTC_DateStruct);
 extern void  (*md380_RTC_GetTime)(uint32_t RTC_Format, RTC_TimeTypeDef* RTC_TimeStruct);
 

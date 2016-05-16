@@ -19,6 +19,7 @@
 
 
 int max_level;
+uint32_t ambe_encode_frame_cnt;
 
 int ambe_encode_thing_hook(char *a1, int a2, int *a3, int a4,
 		      short a5, short a6, short a7, int a8){
@@ -34,9 +35,9 @@ int ambe_encode_thing_hook(char *a1, int a2, int *a3, int a4,
       max=s8[i];
     }  
   }
-  
+     
   max_level=max;
-  
+  ambe_encode_frame_cnt++;
   return ambe_encode_thing(a1,a2,a3,a4,
 			   a5,a6,a7,a8);
 }
