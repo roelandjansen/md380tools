@@ -15,7 +15,7 @@
 #include "ambe.h"
  
 
-  static int flag=0;
+static int flag=0;
 
 // this hook switcht of the exit from the menu in case of RX
 void * f_4225_internel_hook() {
@@ -77,7 +77,7 @@ void f_4102_hook() {
     // Takes a positive(!) integer amplitude and computes 200*log10(amp),
 	// centi Bel, approximtely. If the given parameter is 0 or less, this
 	    // function returns -1.
-int int_centibel(long ampli)
+int intCentibel(long ampli)
 {
     if (ampli <= 0)
 	return -1;		// invalid
@@ -122,85 +122,83 @@ int main(void)
 
 void f_4225_hook()
 {
-//static int y = 0;
-    static int rx_active;
-//  int blabla;
-//  static blablabla;
-//  int i;  
-//  wchar_t w_buff[10];
-//  char c_buff[10];
-  static int fullscale_offset = -1;
-  int relative_peak_cb;
-  int i;
-  int centibel_valX;
+  static int rx_active; // flag to syncronice this hook ( operatingmode == 0x11 is also on rx seeded)
+  static int fullscale_offset = 0;
   static uint32_t lastframe=0;
   static int red=0;
   static int green=0;
-  if (fullscale_offset == -1) {
-    fullscale_offset = int_centibel(3000);
-    }
 
-  if (*md380_f_4225_operatingmode == 0x11 && max_level < 4500 /* && max_level > 100 */) {
-    if (lastframe < ambe_encode_frame_cnt) {	// check for new frame
-      lastframe = ambe_encode_frame_cnt;
-      rx_active=1;
-      
-      relative_peak_cb = int_centibel(max_level) - fullscale_offset;
-//      printf("%i.%i dBFS\en", relative_peak_cb / 10, abs(relative_peak_cb % 10));
-      centibel_valX = relative_peak_cb + abs(relative_peak_cb % 10);
+  int relative_peak_cb;
+  int centibel_valX;
 
+  if ( global_addl_config.experimental == 1 ) {
 
-      if ( lastframe % 5 == 1 ) {
-        if (centibel_valX < -280) {
-          centibel_valX = -280;
-        } else if (centibel_valX > 0) {
-          centibel_valX = 0;
-        }
-        centibel_valX += 280;
-        centibel_valX /= 2;
+    if (fullscale_offset == 0 ) { // init int_centibel()
+      fullscale_offset = intCentibel(3000);  // maybe wav max max_level 
+      }
 
-        gfx_set_fg_color(0x999999);
-        gfx_set_bg_color(0xff000000);
-        gfx_blockfill(9, 49, 151, 61);
+    if (*md380_f_4225_operatingmode == 0x11 && max_level < 4500) {
+      if (lastframe < ambe_encode_frame_cnt) {	// check for new frame
+        lastframe = ambe_encode_frame_cnt;
+        rx_active=1;
         
-//        gfx_blockfill(9, 59, 151, 66);
-        gfx_set_fg_color(0x0000ff);
-        gfx_blockfill((-30+280)/2+10, 62, 150, 65);
-        gfx_set_fg_color(0x00ff00);
-        gfx_blockfill((-130+280)/2+10, 62, (-30+280)/2-1+10, 65);
-        gfx_set_fg_color(0x555555);
-        gfx_blockfill(10, 62, (-130+280)/2-1+10, 65);
-        
-        if ( relative_peak_cb > -3 || red > 0) {
-          if (red > 0) red--;
-          if ( relative_peak_cb > -3) red = 30;
+        relative_peak_cb = intCentibel(max_level) - fullscale_offset;
+        centibel_valX = relative_peak_cb + abs(relative_peak_cb % 10);  // centibel_valX dB FS * 10
+
+
+        if ( lastframe % 5 == 1 ) { // reduce drawing
+          if (centibel_valX < -280) { // limit 160 pixel bargraph 10 150 -> 140 pixel for bargraph
+            centibel_valX = -280;
+          } else if (centibel_valX > 0) {
+            centibel_valX = 0;
+          }
+          centibel_valX += 280;  // shift to positive
+          centibel_valX /= 2;    // scale
+
+          gfx_set_fg_color(0x999999);
+          gfx_set_bg_color(0xff000000);
+          gfx_blockfill(9, 49, 151, 61);
+
+          // paint legend          
           gfx_set_fg_color(0x0000ff);
-        } else if ( relative_peak_cb > -130 || green > 0) {
-          if (green > 0) green--;
-          if ( relative_peak_cb > -130 ) green = 30;
+          gfx_blockfill((-30+280)/2+10, 62, 150, 65);
           gfx_set_fg_color(0x00ff00);
-
-        } else {
+          gfx_blockfill((-130+280)/2+10, 62, (-30+280)/2-1+10, 65);
           gfx_set_fg_color(0x555555);
+          gfx_blockfill(10, 62, (-130+280)/2-1+10, 65);
+          
+          // set color 
+          if ( relative_peak_cb > -3 || red > 0) {
+            if (red > 0) red--;
+            if ( relative_peak_cb > -3) red = 30;
+            gfx_set_fg_color(0x0000ff);
+          } else if ( relative_peak_cb > -130 || green > 0) {
+            if (green > 0) green--;
+            if ( relative_peak_cb > -130 ) green = 30;
+            gfx_set_fg_color(0x00ff00);
+          } else {
+            gfx_set_fg_color(0x555555);
+          }
+          gfx_set_bg_color(0xff000000);
+          gfx_blockfill(10, 50, centibel_valX, 60);
+          gfx_set_fg_color(0xff8032);
+          gfx_set_bg_color(0xff000000);
         }
-        gfx_set_bg_color(0xff000000);
-        gfx_blockfill(10, 50, centibel_valX, 60);
-        gfx_set_fg_color(0xff8032);
-        gfx_set_bg_color(0xff000000);
       }
     }
-  }
 
-  if (*md380_f_4225_operatingmode == 0x12 && rx_active == 1 ) {
-    gfx_set_fg_color(0x999999);
-    gfx_set_bg_color(0xff000000);
-    gfx_blockfill(9, 49, 151, 61);
-//    gfx_blockfill(9, 59, 151, 66);
-    gfx_set_fg_color(0xff8032);
-    gfx_set_bg_color(0xff000000);
-    rx_active = 0;
-    red=0;
-}
+    if (*md380_f_4225_operatingmode == 0x12 && rx_active == 1 ) { // clear screen area
+      gfx_set_fg_color(0x999999);
+      gfx_set_bg_color(0xff000000);
+      gfx_blockfill(9, 49, 151, 65);
+      gfx_set_fg_color(0xff8032);
+      gfx_set_bg_color(0xff000000);
+      
+      rx_active = 0;
+      red=0;
+      green=0;
+    }
+  }
 
 md380_f_4225();
 }
