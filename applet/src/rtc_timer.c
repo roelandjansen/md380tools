@@ -137,7 +137,7 @@ void f_4225_hook()
       fullscale_offset = intCentibel(3000);  // maybe wav max max_level 
       }
 
-    if (*md380_f_4225_operatingmode == 0x11 && max_level < 4500) {
+    if (*md380_f_4225_operatingmode == 0x11 && max_level < 4500 && max_level > 10) { // i hope we are on tx 
       if (lastframe < ambe_encode_frame_cnt) {	// check for new frame
         lastframe = ambe_encode_frame_cnt;
         rx_active=1;
@@ -188,12 +188,9 @@ void f_4225_hook()
     }
 
     if (*md380_f_4225_operatingmode == 0x12 && rx_active == 1 ) { // clear screen area
-      gfx_set_fg_color(0x999999);
-      gfx_set_bg_color(0xff000000);
-      gfx_blockfill(9, 49, 151, 65);
       gfx_set_fg_color(0xff8032);
       gfx_set_bg_color(0xff000000);
-      
+      gfx_blockfill(9, 49, 151, 65);
       rx_active = 0;
       red=0;
       green=0;
