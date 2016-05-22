@@ -131,6 +131,19 @@ void f_4225_hook()
   int relative_peak_cb;
   int centibel_valX;
 
+  if ( global_addl_config.micbargraph == 1 ) {
+
+    if (fullscale_offset == 0 ) { // init int_centibel()
+      fullscale_offset = intCentibel(3000);  // maybe wav max max_level 
+      }
+
+    if (*md380_f_4225_operatingmode == 0x11 && max_level < 4500 && max_level > 10) { // i hope we are on tx 
+      if (lastframe < ambe_encode_frame_cnt) {	// check for new frame
+        lastframe = ambe_encode_frame_cnt;
+        rx_active=1;
+        
+        relative_peak_cb = intCentibel(max_level) - fullscale_offset;
+        centibel_val = relative_peak_cb;
 
   if (fullscale_offset == 0 ) { // init int_centibel()
     fullscale_offset = intCentibel(3000);  // maybe wav max max_level 

@@ -286,6 +286,16 @@ class MD380Graphics(Memory):
     def gfxprint(gfx):
         print("%s %d×%d" % (hex(gfx['address']), gfx['width'], gfx['height']))
         print("%s" % repr(gfx['palette']))
+        print("%d" % len(gfx['palette']))
+        blabla = len(gfx['palette'])
+        bits=0;        
+        while True:
+          blabla/=2;
+          bits += 1;
+          if blabla < 1:
+              break;
+        print("bits pro pixel %d" % bits)        
+ 
         for line in gfx['pixels']:
             for color in line:
                 if color == 0:
@@ -698,6 +708,27 @@ def main():
         else:
             sys.stderr.write('ERROR: Can not determine gfx struct address from PPM header.\n')
             sys.exit(5)
+
+    elif cmd == 'cfile':
+        if args.gfx is None:
+            sys.stderr.write('ERROR: Can\'t work without --gfx to write.\n')
+            sys.exit(5)
+
+        with open(args.gfx, 'rb') as f:
+            gfx = f.read()
+        if args.gfx.lower().endswith('.ppm'):
+            gfx = md.ppmparse(gfx)
+        elif args.gfx.lower().endswith('.pbm'):
+            sys.stderr.write('ERROR: PBM glyphs are not supported, yet.\n')
+            sys.exit(5)
+        else:
+            sys.stderr.write('ERROR: Unsupported file format.\n')
+            sys.exit(5)
+        md.gfxprint(gfx)
+        
+
+        sys.exit(0)        
+
 
     elif cmd == 'ipython':
         font = MD380Fonts(input, args.addr)
