@@ -68,7 +68,11 @@ if __name__ == '__main__':
     patcher.nopout(0x8047f6c+2);
     patcher.nopout(0x8048904);
     patcher.nopout(0x8048904+2);
-    
+
+    # extreme experimental patch :) to "refilpp" the display on md390
+    patcher.sethword(0x08031fdc,0x2048); # from 0x8 to 0x48
+    patcher.sethword(0x0803200c,0x204f); # form 0x40 to 0x4f
+
     #This stub calls the target RESET vector,
     #if it's not FFFFFFFF.
     patcher.sethword(0x0809cf00, 0x4840);
