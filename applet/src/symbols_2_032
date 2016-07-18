@@ -66,6 +66,10 @@ OSSemPost         = 0x803db69;
 md380_OSMboxPost = 0x080303b5;
 OSTimeDly        = 0x080329c1;
 
+/* //! Functions regarding the Independent watchdog (IWDG) */
+md380_dog_feeding                      = 0x804d429;
+
+
 /* //! Functions and Variabes regarding the menu */
 main_menu                              = 0x8039c23;
 md380_create_menu_entry                = 0x800c731;

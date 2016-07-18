@@ -147,6 +147,7 @@ void power_down_hook() {
    drawascii2("exchange for two" , 10, 20+12+12+12+12);
    drawascii2("liters of"        , 10, 20+12+12+12+12+12);
    drawascii2("India Pale Ale,"  , 10, 20+12+12+12+12+12+12);
+   md380_dog_feeding();
    OSTimeDly(1000);
    gfx_set_fg_color(0xff8032);
    gfx_set_bg_color(0xff000000);
@@ -160,6 +161,7 @@ void power_down_hook() {
    drawascii2("god-damned" ,         10, 20+12+12+12+12);
    drawascii2("squary-stary-box." ,  10, 20+12+12+12+12+12);
    drawascii2(""                   , 10, 20+12+12+12+12+12+12);
+   md380_dog_feeding();
    OSTimeDly(1000);
    gfx_set_fg_color(0xff8032);
    gfx_set_bg_color(0xff000000);
@@ -174,6 +176,7 @@ void power_down_hook() {
    drawascii2("Ubertooth Project" , 10, 20+12+12+12+12);
    drawascii2(""        , 10, 20+12+12+12+12+12);
    drawascii2(""  , 10, 20+12+12+12+12+12+12);
+   md380_dog_feeding();
    OSTimeDly(1000);
    gfx_set_fg_color(0xff8032);
    gfx_set_bg_color(0xff000000);
@@ -188,6 +191,7 @@ void power_down_hook() {
    drawascii2("thisrepository." , 10, 20+12+12+12+12);
    drawascii2(""        , 10, 20+12+12+12+12+12);
    drawascii2(""  , 10, 20+12+12+12+12+12+12);
+   md380_dog_feeding();
    OSTimeDly(1000);
    gfx_set_fg_color(0xff8032);
    gfx_set_bg_color(0xff000000);
@@ -202,6 +206,7 @@ void power_down_hook() {
    drawascii2("the BSD license." , 10, 20+12+12+12+12);
    drawascii2(""        , 10, 20+12+12+12+12+12);
    drawascii2(""  , 10, 20+12+12+12+12+12+12);
+   md380_dog_feeding();
    OSTimeDly(1000);
    gfx_set_fg_color(0xff8032);
    gfx_set_bg_color(0xff000000);
@@ -212,6 +217,7 @@ void power_down_hook() {
    drawascii2("Contributors:", 10, 20);   
    gfx_drawbmp((char *) &bmp_travisgoodspeed, 10, 35);
    drawascii2("travis", 75, 35);
+   md380_dog_feeding();
    OSTimeDly(1000);
       
 }

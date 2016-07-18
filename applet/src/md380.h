@@ -116,6 +116,12 @@ void        OS_EXIT_CRITICAL(int);
 
 void        OSTimeDly(uint32_t);
 
+
+//! Functions regarding the Independent watchdog (IWDG)
+void        md380_dog_feeding(void);
+
+
+
 //! Functions and Variabes regarding the menu
 void*   main_menu(void *);     // menu exec
 
