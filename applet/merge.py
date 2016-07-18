@@ -335,6 +335,9 @@ if __name__== '__main__':
     for adr in I2C_SendData_hook_list:
         merger.hookbl(adr,sapplet.getadr("I2C_SendData_hook"),0);
 
+##########  Powering Down hooks
+    merger.hookbl(0x08043f36,sapplet.getadr("power_down_hook"),0);
+
 ##########  Debug and training hooks
     Create_MenuEntrylist=[
         0x0800c278, 0x0800c2c0, 0x0800c2f4, 0x0800c326, 0x0800c358, 0x0800c38a, 0x0800c3bc, 0x0800c468,

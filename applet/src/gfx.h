@@ -2,6 +2,11 @@
   \brief Graphics function wrappers.
 */
 
+
+#ifndef MD380TOOLS_GFX_H_INCLUDED
+#define MD380TOOLS_GFX_H_INCLUDED
+
+
 //! Draws wide text at an address by calling back to the MD380 function.
 void drawtext(wchar_t *text,
 	      int x, int y);
@@ -36,3 +41,5 @@ typedef struct gfx_bitmap {
   } gfx_bitmap;
                             
 extern const gfx_bitmap bmp_eye;
+
+#endif

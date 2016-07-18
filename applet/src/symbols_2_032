@@ -9,6 +9,7 @@ gfx_set_bg_color                       = 0x801c5e1;
 gfx_set_fg_color                       = 0x801c5e9;
 gfx_blockfill                          = 0x801cb05;
 
+
 /* Function that handles the end of a DMR call. */
 dmr_call_end                           = 0x803f33d;
 /* Function that handles a DMR call. */
@@ -63,6 +64,7 @@ OSSemPend         = 0x803da79;
 OSSemPost         = 0x803db69;
 
 md380_OSMboxPost = 0x080303b5;
+OSTimeDly        = 0x080329c1;
 
 /* //! Functions and Variabes regarding the menu */
 main_menu                              = 0x8039c23;

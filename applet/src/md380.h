@@ -38,6 +38,7 @@ void gfx_set_fg_color(int color);
 
 void gfx_blockfill(int xmin, int ymin, int xmax, int ymax);
 
+
 // md380 dmr
 
 //! Function that handles checking a DMR contact.
@@ -113,7 +114,7 @@ int         OS_ENTER_CRITICAL();
 //! Resumes threads.
 void        OS_EXIT_CRITICAL(int);
 
-
+void        OSTimeDly(uint32_t);
 
 //! Functions and Variabes regarding the menu
 void*   main_menu(void *);     // menu exec

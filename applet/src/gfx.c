@@ -10,6 +10,8 @@
 #include "printf.h"
 #include "string.h"
 #include "addl_config.h"
+#include "contributors.h"
+#include "os.h"
 
 //Needed for LED functions.  Cut dependency.
 #include "stm32f4_discovery.h"
@@ -134,3 +136,82 @@ void print_ant_sym_hook(char *bmp, int x, int y) {
     gfx_drawbmp((char *) &bmp_eye, 65, 1);
     }
   }
+
+
+void power_down_hook() {
+   gfx_select_font((void *) 0x809bcec);
+   drawascii2("License:", 10, 20);   
+   drawascii2("The majority of"  , 10, 20+12);
+   drawascii2("this software is" , 10, 20+12+12);
+   drawascii2("licensed in"   , 10, 20+12+12+12);
+   drawascii2("exchange for two" , 10, 20+12+12+12+12);
+   drawascii2("liters of"        , 10, 20+12+12+12+12+12);
+   drawascii2("India Pale Ale,"  , 10, 20+12+12+12+12+12+12);
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+   drawascii2("to be delivered at",  10, 20);   
+   drawascii2("a neighborly bar,"  , 10, 20+12);
+   drawascii2("preferably one" ,     10, 20+12+12);
+   drawascii2("without a"   ,        10, 20+12+12+12);
+   drawascii2("god-damned" ,         10, 20+12+12+12+12);
+   drawascii2("squary-stary-box." ,  10, 20+12+12+12+12+12);
+   drawascii2(""                   , 10, 20+12+12+12+12+12+12);
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("The DFU tools are", 10, 20);   
+   drawascii2("GPL licensed,"  , 10, 20+12);
+   drawascii2("forked from old" , 10, 20+12+12);
+   drawascii2("examples in the"   , 10, 20+12+12+12);
+   drawascii2("Ubertooth Project" , 10, 20+12+12+12+12);
+   drawascii2(""        , 10, 20+12+12+12+12+12);
+   drawascii2(""  , 10, 20+12+12+12+12+12+12);
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Tytera's firmware", 10, 20);   
+   drawascii2("is of unknown"  , 10, 20+12);
+   drawascii2("license and is" , 10, 20+12+12);
+   drawascii2("not included in"   , 10, 20+12+12+12);
+   drawascii2("thisrepository." , 10, 20+12+12+12+12);
+   drawascii2(""        , 10, 20+12+12+12+12+12);
+   drawascii2(""  , 10, 20+12+12+12+12+12+12);
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("We use a"      , 10, 20);   
+   drawascii2("heap-less"     , 10, 20+12);
+   drawascii2("printf"        , 10, 20+12+12);
+   drawascii2("library under" , 10, 20+12+12+12);
+   drawascii2("the BSD license." , 10, 20+12+12+12+12);
+   drawascii2(""        , 10, 20+12+12+12+12+12);
+   drawascii2(""  , 10, 20+12+12+12+12+12+12);
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_travisgoodspeed, 10, 35);
+   drawascii2("travis", 75, 35);
+   OSTimeDly(1000);
+      
+}
