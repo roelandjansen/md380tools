@@ -219,5 +219,222 @@ void power_down_hook() {
    drawascii2("travis", 75, 35);
    md380_dog_feeding();
    OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_aeickho, 10, 35);
+   drawascii2("alex", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_cr, 10, 35);
+   drawascii2("cr", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_d235j, 10, 35);
+   drawascii2("d235j", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_der_stefan, 10, 35);
+   drawascii2("der stefan", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_dg9vh, 10, 35);
+   drawascii2("dg9vh", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_dl8bb, 10, 35);
+   drawascii2("dl8bb", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_dysinger, 10, 35);
+   drawascii2("dysinger", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_Giorgiofox, 10, 35);
+   drawascii2("Giorgiofox", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_hax404, 10, 35);
+   drawascii2("hax404", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_hewittc, 10, 35);
+   drawascii2("hewittc", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_jboone, 10, 35);
+   drawascii2("jboone", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_ladyada, 10, 35);
+   drawascii2("ladyada", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_M0IVQ, 10, 35);
+   drawascii2("M0IVQ", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_mach327, 10, 35);
+   drawascii2("mach327", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_maushammer, 10, 35);
+   drawascii2("maushammer", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_mike01, 10, 35);
+   drawascii2("mike01", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_phl0, 10, 35);
+   drawascii2("phl0", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_rscullin, 10, 35);
+   drawascii2("rscullin", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+   drawascii2("Contributors:", 10, 20);   
+   gfx_drawbmp((char *) &bmp_sellibitze, 10, 35);
+   drawascii2("sellibitze", 75, 35);
+   md380_dog_feeding();
+   OSTimeDly(1000);
+   gfx_set_fg_color(0xff8032);
+   gfx_set_bg_color(0xff000000);
+   gfx_blockfill( 5, 23, 155, 110);
+   gfx_set_bg_color(0xff8032);
+   gfx_set_fg_color(0xff000000);
+
+
       
 }
