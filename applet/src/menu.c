@@ -832,7 +832,7 @@ void create_menu_entry_edit_dmr_id_screen(void) {
   md380_menu_0x2001d3ed = 8;      // max char
   md380_menu_0x2001d3ee = nchars; //  startpos cursor
   md380_menu_0x2001d3ef = nchars; //  startpos cursor
-  md380_menu_0x2001d3f0 = 4;      // 3 = numerical input
+  md380_menu_0x2001d3f0 = 3;      // 3 = numerical input
   md380_menu_0x2001d3f1 = 0;
   md380_menu_0x2001d3f4 = 0;
   menu_mem = (void *)(md380_menu_memory + ((md380_menu_depth) * sizeof(struct MENU))) +  sizeof(struct MENU);
@@ -874,7 +874,7 @@ void create_menu_entry_find_id_screen(void) {
   md380_menu_0x2001d3ed = 8;      // max char
   md380_menu_0x2001d3ee = 0; //  startpos cursor
   md380_menu_0x2001d3ef = 0; //  startpos cursor
-  md380_menu_0x2001d3f0 = 3;      // 3 = numerical input
+  md380_menu_0x2001d3f0 = 1;      // 3 = numerical input
   md380_menu_0x2001d3f1 = 0;
   md380_menu_0x2001d3f4 = 0;
   menu_mem = (void *)(md380_menu_memory + ((md380_menu_depth) * sizeof(struct MENU))) +  sizeof(struct MENU);
