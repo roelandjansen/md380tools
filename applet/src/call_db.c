@@ -118,7 +118,15 @@ static int find_call(char *outstr, char * call_search,
         getfirstcall(dmr_test, call);
 
         if(!strcmp(call_search, call)) {
+            int i=0;
+            int ii=0;
             readline(outstr, dmr_test, outsize);
+            while(outstr[i++]!=',');
+            while(outstr[i++]!=' ');
+                        
+            for(ii=0;outstr[i]!='\0';i++,ii++)
+                outstr[ii]=outstr[i];
+            outstr[ii]='\0';
             return 1;
         }
         if (strcmp(call_search, call) < 0) {
