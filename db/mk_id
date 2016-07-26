@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cat users.csv | 
+  cut -d "," -f 2 | 
+    while read l ; do 
+      echo -n "$l, "
+      grep -e "${l}," -e "${l} ," users.csv | cut -d "," -f 1  | 
+        while read x ; do 
+          echo -n "$x, "
+        done
+      echo 
+    done | sort -u |sed -e "s/,.$//g" > id_call.csv 
+    
+
+wc -c < id_call.csv > data
+cat id_call.csv >> data
+#./md380-tool spiflashwrite data 0x200000
