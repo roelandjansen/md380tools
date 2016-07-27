@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "printf.h"
+
 /* All user database data is accessed through getdata.
  * This makes it easier to adapt to different kinds of sources.
  */
@@ -92,8 +94,11 @@ static const char* next_line_ptr(const char* p) {
  */
 static int getfirstcall (const char * p, char * out) {
   int i;
-  for(i=0; p[i] != ','; i++) {
-    out[i]=p[i];        
+  char buffer[64];
+   
+  getdata(buffer, p, 60);
+  for(i=0; buffer[i] != ','; i++) {
+    out[i]=buffer[i];        
   }  
   out[i]='\0';
   return(0);
@@ -115,8 +120,11 @@ static int find_call(char *outstr, char * call_search,
         if (dmr_test == dmr_end) { dmr_test = next_line_ptr(dmr_begin); }
         if (dmr_test == dmr_end) { dmr_test = dmr_begin; }
         
+        printf("\n%p %p\n", dmr_begin, dmr_end);
+        
         getfirstcall(dmr_test, call);
-
+        printf("\n%s\n", call);
+        
         if(!strcmp(call_search, call)) {
             int i=0;
             int ii=0;
@@ -142,7 +150,8 @@ int find_call_id(char *outstr, char * call_search,
                   const char *data, int outsize)
 {
     const long datasize = getfirstnumber(data);
-
+    printf("\n %d \n", datasize);
+ 
     if (datasize == 0 || datasize > 3279629)  // filesize @ 20160420 is 2279629 byte
        return(0);
 
