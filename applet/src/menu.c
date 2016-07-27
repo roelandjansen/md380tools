@@ -21,6 +21,7 @@
 #include "os.h"
 #include "spiflash.h"
 #include "addl_config.h"
+#include "call_db.h"
 
 const static wchar_t wt_addl_func[]         = L"MD380Tools";
 const static wchar_t wt_datef[]             = L"Date format";
@@ -890,13 +891,26 @@ void create_menu_entry_edit_dmr_id_screen_store(void) {
 void create_menu_entry_find_id_call_store(void) {
 //  uint32_t new_dmr_id=0;
 //  uint32_t *dmr_id;
-//  wchar_t *bf;
-
+  wchar_t *wcall;
+  char text[80];
+  char call[16];
+  int i;
 #ifdef DEBUG
   printf("your enter: ");
   printhex2((char *) md380_menu_edit_buf,14);
   printf("\n");
 #endif
+  wcall=md380_menu_edit_buf;
+  
+  for(i=0;i<sizeof(call)-1;i++) {
+    call[i]=wcall[i];
+    if (call[i]>='a' && call[i]<='z') call[i] =call[i] - 32;
+  }
+  call[i]='\0'; 
+  printf("\nto: %s\n",call );        
+  
+  find_call_id(text, call,  (void *) 0x200000, sizeof text);
+  printf("get: %s",text );        
 
 //  bf=md380_menu_edit_buf;
 //B  while( *bf != 0) {
