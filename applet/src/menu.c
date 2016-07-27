@@ -891,6 +891,8 @@ void create_menu_entry_edit_dmr_id_screen_store(void) {
 void create_menu_entry_find_id_call_store(void) {
 //  uint32_t new_dmr_id=0;
 //  uint32_t *dmr_id;
+  struct MENU *menu_mem;
+  static wchar_t bad_buffer[16]; 
   wchar_t *wcall;
   char text[80];
   char call[16];
@@ -901,7 +903,14 @@ void create_menu_entry_find_id_call_store(void) {
   printf("\n");
 #endif
   wcall=md380_menu_edit_buf;
+  menu_mem = (void *)((md380_menu_memory + ((md380_menu_depth-1) * sizeof(struct MENU))) + sizeof(struct MENU));
   
+  for(i=0;i<sizeof(bad_buffer)-1;i++) {
+      bad_buffer[i]=md380_menu_edit_buf[i];
+  }
+   bad_buffer[i]='\0'; 
+   
+   menu_mem->menu_title = bad_buffer;  
   for(i=0;i<sizeof(call)-1;i++) {
     call[i]=wcall[i];
     if (call[i]>='a' && call[i]<='z') call[i] =call[i] - 32;
@@ -911,7 +920,14 @@ void create_menu_entry_find_id_call_store(void) {
   
   find_call_id(text, call,  (void *) 0x200000, sizeof text);
   printf("get: %s",text );        
-
+  
+  wcall=md380_menu_edit_buf;
+  for(i=0;i<sizeof(text)-1;i++) {
+      wcall[i]=text[i];
+  }
+  wcall[i]='\0'; 
+               
+  
 //  bf=md380_menu_edit_buf;
 //B  while( *bf != 0) {
   //  new_dmr_id *= 10;
