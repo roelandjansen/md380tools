@@ -142,3 +142,12 @@ void print_ant_sym_hook(char *bmp, int x, int y) {
   }
 #endif
 }
+
+
+void print_status_line_hook(int a, int b) {
+  printf("%x %x\n",a,b);
+  md380_print_status_line(a,b);
+  if(global_addl_config.promtg==1) {
+    gfx_drawbmp((char *) &bmp_eye, 65, -1);
+  }    
+}

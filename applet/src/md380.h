@@ -150,6 +150,10 @@ extern wchar_t  	md380_menu_edit_buf[];
 
 uint32_t  md380_menu_0x20001114;
 
+//! hook promiscuous eye
+void md380_print_status_line(int ,int );
+
+
 //! program_radio_unprohibited (menu entry) ... bulding site is an struct
 extern uint8_t md380_program_radio_unprohibited[];
 

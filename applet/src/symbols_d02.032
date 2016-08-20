@@ -114,6 +114,8 @@ md380_menu_mem_base		       = 0x20019df0; /* from D002.032 @ 0x801a014 func 0x80
 md380_menu_memory	               = 0x2001c148; /* from D002.032 @ 0x8019fda func 0x8019fd0 */
 md380_menu_edit_buf		       = 0x2001b716; /* from D002.032 @ 0x802c9a8 func 0x802c99c */
 
+md380_print_status_line		       = 0x080237ad;
+
 /* c5000 */
 c5000_spi0_readreg = 0x0803e2f5;
 c5000_spi0_writereg = 0x0803e2a9;
