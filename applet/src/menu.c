@@ -905,7 +905,7 @@ void create_menu_entry_find_id_call_store(void) {
   wcall=md380_menu_edit_buf;
   menu_mem = (void *)((md380_menu_memory + ((md380_menu_depth-1) * sizeof(struct MENU))) + sizeof(struct MENU));
   
-  for(i=0;i<sizeof(bad_buffer)-1;i++) {
+  for(i=0;i<(sizeof(bad_buffer)-1);i++) {
       bad_buffer[i]=md380_menu_edit_buf[i];
   }
    bad_buffer[i]='\0'; 
@@ -945,7 +945,7 @@ void create_menu_entry_find_id_call_store(void) {
   md380_menu_id    = md380_menu_id - 1;
   md380_menu_depth = md380_menu_depth - 1;
 #ifdef CONFIG_MENU
-  create_menu_entry_hook( md380_menu_id, md380_menu_edit_buf,    md380_menu_entry_back+1,  md380_menu_entry_back+1  ,6, 1 , 1);
+  md380_create_menu_entry( md380_menu_id, md380_menu_edit_buf,    md380_menu_entry_back+1,  md380_menu_entry_back+1  ,6, 1 , 1);
 #endif
 }
 
@@ -1052,7 +1052,7 @@ void create_menu_entry_find_id_screen(void) {
   menu_mem->unknown_01 = 0;
 
 #ifdef CONFIG_MENU
-  create_menu_entry_hook( md380_menu_id, wt_find_id_call,  create_menu_entry_find_id_call_store + 1 , md380_menu_numerical_input  + 1,  0x81, 0 , 1);
+  md380_create_menu_entry( md380_menu_id, wt_find_id_call,  create_menu_entry_find_id_call_store + 1 , md380_menu_numerical_input  + 1,  0x81, 0 , 1);
 #endif
 }
 
@@ -1092,7 +1092,7 @@ void create_menu_entry_addl_functions_screen(void) {
                           md380_menu_entry_back+1, 0x98, 0 , 1);
   md380_create_menu_entry( md380_menu_id + 8, wt_experimental, create_menu_entry_experimental_screen+1,
                           md380_menu_entry_back+1, 0x8a, 0 , 1);
-  create_menu_entry_hook( md380_menu_id + 9, wt_find_id,      create_menu_entry_find_id_screen+1,
+  md380_create_menu_entry( md380_menu_id + 9, wt_find_id,      create_menu_entry_find_id_screen+1,
                           md380_menu_entry_back+1, 0x8a, 0 , 1);
 #endif
 
