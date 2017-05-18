@@ -48,7 +48,9 @@ BOOL ZoneList_ReadNameByIndex( int index,             // [in] zero-based zone in
 BOOL ZoneList_SetZoneByIndex( int index )  // [in] zero-based zone index
 {
   wchar_t wc16Temp[20];
+#ifdef CODEPLUG_RAM_ADDR_ZONE_NUMBER_STRUCT
   zone_number_t *pZoneStruct;
+#endif
 
   // Summary of 'zone-related' variables and functions, with addresses for D13.020 (RAM, SPI-Flash) :
   // - zone_data_64byte @ 0x2001e218 : Seems to be a 64 byte structure with the 
@@ -84,7 +86,7 @@ BOOL ZoneList_SetZoneByIndex( int index )  // [in] zero-based zone index
 #      endif
       }
      // Imitate some of the code at 0x08013418 in D13.020 ...
-     // This possibly the stuff called when 'confirming' a new zone in Tytera's original menu.
+     // This is possibly the stuff called when 'confirming' a new zone in Tytera's original menu.
      // There seems to be a FIVE-BYTE struct with the ZONE NUMBER at byte-offset #3. 
      // It lives in SPI-flash (at 0x2F000?), and there's a copy in Tytera's part of the RAM:
 #   ifdef CODEPLUG_RAM_ADDR_ZONE_NUMBER_STRUCT /* 0x2001E57C in D13.020, ymmv.. */
@@ -259,18 +261,22 @@ int am_cbk_ZoneList(app_menu_t *pMenu, menu_item_t *pItem, int event, int param 
         case 'U' :  // cursor UP
            if(  pSL->focused_item > 0 )
             { --pSL->focused_item;
+            } else // Wrap around top
+            { pSL->focused_item = (pSL->num_items-1);
+            }
 #            if( CONFIG_MORSE_OUTPUT ) // autonomously report the first item in Morse code:
               pMenu->morse_request = AMENU_MORSE_REQUEST_ITEM_TEXT | AMENU_MORSE_REQUEST_ITEM_VALUE;
 #            endif
-            }
            break;
         case 'D' :  // cursor DOWN
            if(  pSL->focused_item < (pSL->num_items-1) )
             { ++pSL->focused_item;
+            } else // Wrap around bottom
+            { pSL->focused_item = 0;
+            }
 #            if( CONFIG_MORSE_OUTPUT ) // autonomously report the first item in Morse code:
               pMenu->morse_request = AMENU_MORSE_REQUEST_ITEM_TEXT | AMENU_MORSE_REQUEST_ITEM_VALUE;
 #            endif
-            }
            break;
         default:    // Other keys .. editing or treat as a hotkey ?
            break;
