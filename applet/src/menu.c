@@ -90,8 +90,10 @@ const static wchar_t wt_no_w25q128[]        = L"No W25Q128";
 const static wchar_t wt_micbargraph[]       = L"Mic bargraph";
 
 const static wchar_t wt_backlight[]         = L"Backlight Tmr";
-const static wchar_t wt_blunchanged[]       = L"Unchanged";
+const static wchar_t wt_blalways[]          = L"Always";
 const static wchar_t wt_bl5[]               = L"5 sec";
+const static wchar_t wt_bl10[]              = L"10 sec";
+const static wchar_t wt_bl15[]              = L"15 sec";
 const static wchar_t wt_bl30[]              = L"30 sec";
 const static wchar_t wt_bl60[]              = L"60 sec";
 
@@ -504,7 +506,7 @@ void create_menu_entry_demo_enable_screen(void)
 {
     mn_create_single_timed_ack(wt_demoscr, wt_enable);
 
-    global_addl_config.boot_demo = 0;
+    global_addl_config.boot_demo = 1;
 
     cfg_save();
 }
@@ -513,7 +515,7 @@ void create_menu_entry_demo_disable_screen(void)
 {
     mn_create_single_timed_ack(wt_demoscr, wt_disable);
 
-    global_addl_config.boot_demo = 1;
+    global_addl_config.boot_demo = 0;
 
     cfg_save();
 }
@@ -522,7 +524,7 @@ void create_menu_entry_demo_screen(void)
 {
     mn_submenu_init(wt_demoscr);
 
-    md380_menu_entry_selected = global_addl_config.boot_demo == 1 ? 0 : 1;
+    md380_menu_entry_selected = global_addl_config.boot_demo;
 
     mn_submenu_add(wt_disable, create_menu_entry_demo_disable_screen);
     mn_submenu_add(wt_enable, create_menu_entry_demo_enable_screen);
@@ -1135,11 +1137,7 @@ void create_menu_entry_promtg_screen(void)
 {
     mn_submenu_init(wt_promtg);
 
-    if( global_addl_config.promtg == 0 ) {
-        md380_menu_entry_selected = 0;
-    } else {
-        md380_menu_entry_selected = 1;
-    }
+    md380_menu_entry_selected = global_addl_config.promtg;
 
     mn_submenu_add(wt_disable, create_menu_entry_promtg_disable_screen);
     mn_submenu_add(wt_enable, create_menu_entry_promtg_enable_screen);
@@ -1151,11 +1149,7 @@ void create_menu_entry_micbargraph_screen(void)
 {
     mn_submenu_init(wt_micbargraph);
 
-    if( global_addl_config.micbargraph == 0 ) {
-        md380_menu_entry_selected = 0;
-    } else {
-        md380_menu_entry_selected = 1;
-    }
+    md380_menu_entry_selected = global_addl_config.micbargraph;
 
     mn_submenu_add(wt_disable, create_menu_entry_micbargraph_disable_screen);
     mn_submenu_add(wt_enable, create_menu_entry_micbargraph_enable_screen);
@@ -1167,11 +1161,7 @@ void create_menu_entry_rbeep_screen(void)
 {
     mn_submenu_init(wt_rbeep);
 
-    if( global_addl_config.rbeep == 0 ) {
-        md380_menu_entry_selected = 0;
-    } else {
-        md380_menu_entry_selected = 1;
-    }
+    md380_menu_entry_selected = global_addl_config.rbeep;
 
     mn_submenu_add(wt_disable, create_menu_entry_rbeep_disable_screen);
     mn_submenu_add(wt_enable, create_menu_entry_rbeep_enable_screen);
@@ -1284,11 +1274,7 @@ void create_menu_entry_debug_screen(void)
 {
     mn_submenu_init(wt_debug);
 
-    if( global_addl_config.debug == 1 ) {
-        md380_menu_entry_selected = 0;
-    } else {
-        md380_menu_entry_selected = 1;
-    }
+    md380_menu_entry_selected = global_addl_config.debug;
 
     mn_submenu_add(wt_disable, create_menu_entry_debug_disable_screen);
     mn_submenu_add(wt_enable, create_menu_entry_debug_enable_screen);
@@ -1340,11 +1326,7 @@ void create_menu_entry_experimental_screen(void)
 {
     mn_submenu_init(wt_experimental);
 
-    if( global_addl_config.experimental == 0 ) {
-        md380_menu_entry_selected = 0;
-    } else {
-        md380_menu_entry_selected = 1;
-    }
+    md380_menu_entry_selected = global_addl_config.experimental;
 
     mn_submenu_add(wt_disable, create_menu_entry_experimental_disable_screen);
     mn_submenu_add(wt_enable, create_menu_entry_experimental_enable_screen);
@@ -1369,14 +1351,25 @@ void mn_backlight_set(int sec5, const wchar_t *label)
     rc_write_radio_config_to_flash();    
 }
 
-void mn_backlight_unchanged()
+void mn_backlight_always()
 {
+    mn_backlight_set(0,wt_blalways);     
 }
 
 
 void mn_backlight_5sec()
 {
     mn_backlight_set(1,wt_bl5);     
+}
+
+void mn_backlight_10sec()
+{
+    mn_backlight_set(2,wt_bl10);     
+}
+
+void mn_backlight_15sec()
+{
+    mn_backlight_set(3,wt_bl15);     
 }
 
 void mn_backlight_30sec()
@@ -1396,13 +1389,17 @@ void mn_backlight(void)  // menu for the backlight-TIME (longer than Tytera's, b
     switch( md380_radio_config.backlight_time ) // inspired by stargo0's fix #674 
      { // (fixes the selection of the current backlight-time in the menu)
        case 1 /* times 5sec */ : md380_menu_entry_selected = 1; break;
-       case 6 /* times 5sec */ : md380_menu_entry_selected = 2; break;
-       case 12/* times 5sec */ : md380_menu_entry_selected = 3; break;
-       default/* unchanged  */ : md380_menu_entry_selected = 0; break;
+       case 2 /* times 5sec */ : md380_menu_entry_selected = 2; break;
+       case 3 /* times 5sec */ : md380_menu_entry_selected = 3; break;
+       case 6 /* times 5sec */ : md380_menu_entry_selected = 4; break;
+       case 12/* times 5sec */ : md380_menu_entry_selected = 5; break;
+       default/* always  */    : md380_menu_entry_selected = 0; break;
      }
-    mn_submenu_add(wt_blunchanged, mn_backlight_unchanged);
+    mn_submenu_add(wt_blalways, mn_backlight_always);
     mn_submenu_add(wt_bl5,  mn_backlight_5sec );
 
+    mn_submenu_add(wt_bl10, mn_backlight_10sec);
+    mn_submenu_add(wt_bl15, mn_backlight_15sec);
     mn_submenu_add(wt_bl30, mn_backlight_30sec);
     mn_submenu_add(wt_bl60, mn_backlight_60sec);
 
