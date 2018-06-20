@@ -39,6 +39,8 @@ const static wchar_t wt_main_sms[]          = L"SMS Service";		// main menu 4 - 
 const static wchar_t wt_main_keyb[]         = L"Keyboard";	// main menu 5 - keyboard options
 const static wchar_t wt_main_tones[]        = L"Tones";		// main menu 6 - tone settings
 const static wchar_t wt_main_dev[]          = L"Developer";	// main menu 7 - developer menu
+
+#if defined(FW_D13_020) || defined(FW_S13_020)
 // Sub menu header
 const static wchar_t wt_disp_menu[]         = L"Display Setup";	// sub menu 1 header title
 const static wchar_t wt_radio_menu[]        = L"Radio Setup";	// sub menu 2 header title
@@ -47,13 +49,14 @@ const static wchar_t wt_sms_menu[]          = L"SMS Service";	// sub menu 4 head
 const static wchar_t wt_keyb_menu[]         = L"Keyboard Setup";// sub menu 5 header title
 const static wchar_t wt_tones_menu[]        = L"Tones/Audio";	// sub menu 6 header title
 const static wchar_t wt_dev_menu[]          = L"Developer";	// sub menu 7 header title
+#endif
 
 const static wchar_t wt_enable[]            = L"Enable";        // general option used in several menus
 const static wchar_t wt_disable[]           = L"Disable";       // general option used in several menus
 
 const static wchar_t wt_bootopts[]          = L"Boot Options";
 const static wchar_t wt_demoscr[]           = L"Demo Screen";
-const static wchar_t wt_splash[]            = L"Splash Mode";
+//const static wchar_t wt_splash[]            = L"Splash Mode";
 const static wchar_t wt_rbeep[]             = L"M. RogerBeep";
 
 const static wchar_t wt_showcall[]          = L"Show Calls";    // was UsersCSV / enable / disable now added Talker Alias
@@ -99,12 +102,15 @@ const static wchar_t wt_datef_iso[]         = L"YYYY-MM-DD";
 const static wchar_t wt_datef_alt[]         = L"Lastheard ";    // show lastheard in statusline instead of date/time
 const static wchar_t wt_datef_talias[]      = L"Talker Alias";  // show Talker Alias in statusline instead of date/time
 
+#if defined(FW_D13_020) || defined(FW_S13_020)
 const static wchar_t wt_set_tg_id[]         = L"Set Talkgroup"; // brad's PR #708
+#endif
+
 const static wchar_t wt_netmon[]            = L"NetMonitor";
 const static wchar_t wt_promtg[]            = L"Promiscuous";
 const static wchar_t wt_edit[]              = L"Edit";
 const static wchar_t wt_edit_dmr_id[]       = L"Edit DMR-ID";
-const static wchar_t wt_no_w25q128[]        = L"No W25Q128";
+//const static wchar_t wt_no_w25q128[]        = L"No W25Q128";
 
 const static wchar_t wt_micbargraph[]       = L"Mic bargraph";
 
@@ -170,6 +176,11 @@ const static wchar_t wt_ch_color[]	    = L"CH Info Color";
 const static wchar_t wt_ch_color0[]	    = L"Standard";
 const static wchar_t wt_ch_color1[]	    = L"Light Blue";
 
+const static wchar_t wt_lh_status[]	    = L"Lastheard Cfg";
+const static wchar_t wt_lh_ts_off[]	    = L"LH TS Off";
+const static wchar_t wt_lh_ts_on[]          = L"LH TS On";
+const static wchar_t wt_lh_tstg_on[]        = L"LH TS/TG On";
+
 const static wchar_t wt_debug[]             = L"USB logging";
 const static wchar_t wt_experimental[]      = L"Experimental";
 const static wchar_t wt_cp_override[]       = L"CoPl Override";
@@ -183,8 +194,9 @@ const static wchar_t wt_dev_mode1[]         = L"Ext. FM setup";  // devmode_leve
 const static wchar_t wt_dev_mode2[]         = L"USB verbose";    // devmode_level = 2
 const static wchar_t wt_dev_mode3[]         = L"Short Menu";     // devmode_level = 3
 
-
+#if defined(FW_D13_020) || defined(FW_S13_020)
 const static wchar_t wt_backlight_menu[]    = L"Backlight";
+#endif
 
 #ifndef  CONFIG_DIMMED_LIGHT   // Dimmed backlight ?
 # define CONFIG_DIMMED_LIGHT 0 // only if defined > 0 in config.h
@@ -208,7 +220,7 @@ const static wchar_t wt_splash_callname[]   = L"Callsign+Name";
 
 const static wchar_t wt_cp_override_dmrid[] = L"ID Override";
 
-
+#if defined(FW_D13_020) || defined(FW_S13_020)
 const static wchar_t wt_sidebutton_menu[]   = L"Side Buttons";
 const static wchar_t wt_button_top_press[]  = L"Top Pressed";
 const static wchar_t wt_button_bot_press[]  = L"Bottom Pressed";
@@ -259,6 +271,7 @@ const static uint8_t button_functions[]     = {0x00, 0x01, 0x02, 0x03, 0x04, 0x0
 					      ,0x55 // mic gain toggle
 					      ,0x56 // promiscuous mode on/off
                                               };
+#endif
 
 uint8_t button_selected = 0;
 uint8_t button_function = 0;
@@ -905,7 +918,44 @@ void create_menu_ch_color(void)
 
 	mn_submenu_finalize();
 }
+
 //--------------------------------------------------------------------------------------------------------//
+
+void mn_option_lh_ts_off(void)
+{
+    mn_create_single_timed_ack(wt_lh_status, wt_lh_ts_off);
+    global_addl_config.lh_tsstat = 0;
+    cfg_save();
+}
+
+void mn_option_lh_ts_on(void)
+{
+    mn_create_single_timed_ack(wt_lh_status, wt_lh_ts_on);
+    global_addl_config.lh_tsstat = 1;
+    cfg_save();
+}
+
+void mn_option_lh_tstg_on(void)
+{
+    mn_create_single_timed_ack(wt_lh_status, wt_lh_tstg_on);
+    global_addl_config.lh_tsstat = 2;
+    cfg_save();
+}
+
+
+void create_menu_lh_status(void)
+{
+	mn_submenu_init(wt_lh_status);
+
+	md380_menu_entry_selected = global_addl_config.lh_tsstat;
+	mn_submenu_add(wt_lh_ts_off, mn_option_lh_ts_off);
+	mn_submenu_add(wt_lh_ts_on, mn_option_lh_ts_on);
+	mn_submenu_add(wt_lh_tstg_on, mn_option_lh_tstg_on);
+
+	mn_submenu_finalize();
+}
+//--------------------------------------------------------------------------------------------------------//
+
 
 
 //==========================================================================================================//
@@ -2589,6 +2639,9 @@ void create_menu_entry_display(void)
    mn_submenu_add_98(wt_radio_color, create_menu_radio_color);
    mn_submenu_add_98(wt_ch_status, create_menu_ch_status);
    mn_submenu_add_98(wt_ch_color, create_menu_ch_color);
+   if(     global_addl_config.datef >= 5 ) {		// show submenu selection only if LH & TA configured
+	   mn_submenu_add_98(wt_lh_status, create_menu_lh_status);
+   }
 
    mn_submenu_add_98(wt_bootopts, create_menu_entry_bootopts_screen);
 
